@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://cr0vks3weya76"]
+
+[ext_resource type="Texture2D" uid="uid://vsh53w0kddj4" path="res://icon.svg" id="1_itlcx"]
+[ext_resource type="Script" uid="uid://b8jlnpiwhkovb" path="res://weapon_pivot.gd" id="2_t76ph"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oy16b"]
+size = Vector2(1234, 191)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x8gtn"]
+size = Vector2(100, 100)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_itlcx"]
+friction = 0.1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mb55d"]
+size = Vector2(100, 100)
+
+[node name="Jamesscene" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(574, 654)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_oy16b")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+scale = Vector2(9.6406, 1.57813)
+texture = ExtResource("1_itlcx")
+
+[node name="Player" type="RigidBody2D" parent="."]
+position = Vector2(591, 450)
+rotation = -0.051317
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_x8gtn")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+scale = Vector2(0.7813, 0.7813)
+texture = ExtResource("1_itlcx")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Player"]
+node_a = NodePath("..")
+node_b = NodePath("../Weapon")
+
+[node name="Weapon" type="RigidBody2D" parent="Player"]
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_itlcx")
+script = ExtResource("2_t76ph")
+
+[node name="Hilt" type="Sprite2D" parent="Player/Weapon"]
+position = Vector2(120, 0)
+scale = Vector2(0.7813, 0.7813)
+texture = ExtResource("1_itlcx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Weapon"]
+position = Vector2(120, 0)
+shape = SubResource("RectangleShape2D_mb55d")
