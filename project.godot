@@ -11,5 +11,6 @@ config_version=5
 [application]
 
 config/name="James Gam 249"
+run/main_scene="uid://dh21wubx1odjb"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
