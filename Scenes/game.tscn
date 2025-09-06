@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dh21wubx1odjb"]
+[gd_scene load_steps=12 format=4 uid="uid://dh21wubx1odjb"]
 
 [ext_resource type="Texture2D" uid="uid://vsh53w0kddj4" path="res://icon.svg" id="1_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://dl8yi5v1vwkq3" path="res://Scenes/player.tscn" id="2_3dryh"]
 [ext_resource type="Script" uid="uid://cu5yompuo8gcb" path="res://Scripts/enemy.gd" id="3_wowpa"]
 [ext_resource type="PackedScene" uid="uid://bxdeq1ivh4mi3" path="res://Scenes/gügly_eyes.tscn" id="4_3dryh"]
+[ext_resource type="TileSet" uid="uid://dumlhgw7hloka" path="res://Resources/grass_tile_set.tres" id="5_v158k"]
 [ext_resource type="PackedScene" uid="uid://buas4iqytj32k" path="res://Scenes/button.tscn" id="5_wowpa"]
 [ext_resource type="Script" uid="uid://bjbbotk4r002l" path="res://Scripts/button.gd" id="6_i6g32"]
 [ext_resource type="PackedScene" uid="uid://bdc44ouqrma4l" path="res://Scenes/sliding_door.tscn" id="7_1l0tm"]
@@ -19,6 +20,7 @@ size = Vector2(100, 100)
 [node name="Game" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
 position = Vector2(574, 654)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
@@ -29,10 +31,10 @@ scale = Vector2(9.6406, 1.57813)
 texture = ExtResource("1_wrm1d")
 
 [node name="Player" parent="." instance=ExtResource("2_3dryh")]
-position = Vector2(591, 450)
+position = Vector2(597, 434)
 
 [node name="Enemy" type="RigidBody2D" parent="."]
-position = Vector2(1016, 459)
+position = Vector2(1020, 411)
 mass = 0.1
 physics_material_override = SubResource("PhysicsMaterial_e2o6t")
 can_sleep = false
@@ -56,7 +58,7 @@ position = Vector2(-26.71, -3.02)
 scale = Vector2(0.396775, 0.396775)
 
 [node name="Button" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("5_wowpa")]
-position = Vector2(221, 547)
+position = Vector2(220, 496)
 script = ExtResource("6_i6g32")
 button_type = 1
 connects_to = [NodePath("../SlidingDoor")]
@@ -86,3 +88,8 @@ scale = Vector2(0.396775, 0.396775)
 [node name="GüglyEyes2" parent="InertBox/Sprite2D" instance=ExtResource("4_3dryh")]
 position = Vector2(-26.71, -3.02)
 scale = Vector2(0.396775, 0.396775)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(1.563, 1.563)
+tile_map_data = PackedByteArray("AAAAAAUAAQABAAAAAAABAAUAAQACAAAAAAACAAUAAQACAAAAAAADAAUAAQACAAAAAAAEAAUAAQACAAAAAAAFAAUAAQACAAAAAAAGAAUAAQACAAAAAAAHAAUAAQACAAAAAAAIAAUAAQACAAAAAAAJAAUAAQACAAAAAAAKAAUAAQACAAAAAAALAAUAAQADAAAAAAA=")
+tile_set = ExtResource("5_v158k")
