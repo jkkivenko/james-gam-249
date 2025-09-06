@@ -193,9 +193,12 @@ func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index)
 	var hit = body.shape_owner_get_owner(body.shape_find_owner(body_shape_index)).get_parent()
 	var block_that_performed_hit : HammerComponent = shape_owner_get_owner(shape_find_owner(local_shape_index))
 	# If you hit with a spring, apply some forces
-	if block_that_performed_hit.is_springy:
-		print("ASDASDASDASDASDASDASDASD")
-		apply_impulse((-Vector2.UP).rotated(block_that_performed_hit.global_rotation) * 500, block_that_performed_hit.global_position - global_position)
+	if block_that_performed_hit is Spring:
+		if block_that_performed_hit.time_since_last_hit > block_that_performed_hit.cooldown:
+			block_that_performed_hit.time_since_last_hit = 0.0
+			apply_impulse((-Vector2.UP).rotated(block_that_performed_hit.global_rotation) * block_that_performed_hit.springiness, block_that_performed_hit.global_position - global_position)
+			if hit is RigidBody2D:
+				hit.apply_impulse(Vector2.UP.rotated(block_that_performed_hit.global_rotation) * block_that_performed_hit.springiness * 2.0)
 	# ensure you have hit an enemy
 	if not "required_impulse_to_kill" in hit:
 		return
