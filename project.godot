@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameManager="*res://Scripts/game_manager.gd"
+PickupManager="*res://Scripts/pickup_manager.gd"
 
 [global_group]
 
@@ -58,6 +59,10 @@ Weapon=""
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Physics Objects"
 2d_physics/layer_4="Player Exclusion"
+
+[physics]
+
+2d/solver/contact_max_allowed_penetration=0.03
 
 [rendering]
 
