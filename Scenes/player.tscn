@@ -36,3 +36,5 @@ node_a = NodePath("..")
 node_b = NodePath("../WeaponPivot")
 
 [node name="WeaponPivot" parent="." instance=ExtResource("3_6t5aa")]
+shwing_force = 350000.0
+max_rotation_speed = 0.6
