@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b81b7gfiot1ei"]
+
+[ext_resource type="Script" uid="uid://b8jlnpiwhkovb" path="res://Scripts/weapon_pivot.gd" id="1_7vne0"]
+[ext_resource type="PackedScene" uid="uid://bqj8wf1b8vux2" path="res://Scenes/hilt.tscn" id="2_1c5ut"]
+
+[node name="WeaponPivot" type="RigidBody2D"]
+mass = 0.1
+contact_monitor = true
+max_contacts_reported = 5
+script = ExtResource("1_7vne0")
+shwing_force = 400000.0
+max_rotation_speed = 1.5
+
+[node name="Hilt" parent="." instance=ExtResource("2_1c5ut")]
+position = Vector2(0, -120)
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

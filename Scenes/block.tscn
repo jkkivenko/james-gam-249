@@ -1,16 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://dafcgwkvmg08y"]
+[gd_scene load_steps=5 format=3 uid="uid://dafcgwkvmg08y"]
 
-[ext_resource type="Script" uid="uid://cl1xu3it2xahs" path="res://Scripts/block.gd" id="1_ejx3s"]
+[ext_resource type="Script" uid="uid://t3j8047r2pwx" path="res://Scripts/hammer_component.gd" id="1_8o1l4"]
 [ext_resource type="Texture2D" uid="uid://vsh53w0kddj4" path="res://icon.svg" id="2_8o1l4"]
+[ext_resource type="PackedScene" uid="uid://b0x3aihndppp2" path="res://Scenes/attachment_point.tscn" id="3_c2iur"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fsd7l"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejx3s"]
 size = Vector2(100, 100)
 
 [node name="Block" type="CollisionShape2D"]
-shape = SubResource("RectangleShape2D_fsd7l")
-script = ExtResource("1_ejx3s")
-mass = 0.1
+shape = SubResource("RectangleShape2D_ejx3s")
+script = ExtResource("1_8o1l4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.784, 0.784)
 texture = ExtResource("2_8o1l4")
+
+[node name="Left" parent="." instance=ExtResource("3_c2iur")]
+position = Vector2(-50, 0)
+rotation = -1.5708
+
+[node name="Top" parent="." instance=ExtResource("3_c2iur")]
+position = Vector2(0, -50)
+
+[node name="Right" parent="." instance=ExtResource("3_c2iur")]
+position = Vector2(50, 0)
+rotation = 1.5708
+
+[node name="Bottom" parent="." instance=ExtResource("3_c2iur")]
+position = Vector2(0, 50)
+rotation = -3.14159

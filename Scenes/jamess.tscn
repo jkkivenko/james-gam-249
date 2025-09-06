@@ -1,50 +1,54 @@
-[gd_scene load_steps=7 format=3 uid="uid://cr0vks3weya76"]
+[gd_scene load_steps=9 format=3 uid="uid://ekx6m0e8ufcf"]
 
 [ext_resource type="Texture2D" uid="uid://vsh53w0kddj4" path="res://icon.svg" id="1_llrt7"]
-[ext_resource type="Script" uid="uid://dvy0hwhhqi1oy" path="res://player_controller.gd" id="2_f8181"]
-[ext_resource type="PackedScene" uid="uid://b81b7gfiot1ei" path="res://Scenes/hammer.tscn" id="2_llrt7"]
-[ext_resource type="PackedScene" uid="uid://dafcgwkvmg08y" path="res://Scenes/block.tscn" id="4_fe7jn"]
+[ext_resource type="PackedScene" uid="uid://dl8yi5v1vwkq3" path="res://Scenes/player.tscn" id="2_f8181"]
+[ext_resource type="Script" uid="uid://cu5yompuo8gcb" path="res://Scripts/enemy.gd" id="3_fe7jn"]
+[ext_resource type="PackedScene" uid="uid://dw81ctxi12y6v" path="res://Scenes/component_entity.tscn" id="4_fe7jn"]
+[ext_resource type="PackedScene" uid="uid://dafcgwkvmg08y" path="res://Scenes/block.tscn" id="5_lpgml"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oy16b"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2o6t"]
 size = Vector2(1234, 191)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x8gtn"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e2o6t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_80nbo"]
 size = Vector2(100, 100)
 
-[node name="Jamesscene" type="Node2D"]
+[node name="Game" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(574, 654)
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("RectangleShape2D_oy16b")
+shape = SubResource("RectangleShape2D_e2o6t")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 scale = Vector2(9.6406, 1.57813)
 texture = ExtResource("1_llrt7")
 
-[node name="Player" type="RigidBody2D" parent="."]
+[node name="Player" parent="." instance=ExtResource("2_f8181")]
 position = Vector2(591, 450)
+
+[node name="Enemy" type="RigidBody2D" parent="."]
+position = Vector2(1016, 460)
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_e2o6t")
 lock_rotation = true
-script = ExtResource("2_f8181")
-movement_force_magnitude = 3000.0
-bonus_friction_force_magnitude = 1000.0
+script = ExtResource("3_fe7jn")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("RectangleShape2D_x8gtn")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+shape = SubResource("RectangleShape2D_80nbo")
 
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
+[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
+rotation = 3.14159
 scale = Vector2(0.7813, 0.7813)
 texture = ExtResource("1_llrt7")
 
-[node name="PinJoint2D" type="PinJoint2D" parent="Player"]
-node_a = NodePath("..")
-node_b = NodePath("../Weapon")
+[node name="ComponentEntity" parent="." instance=ExtResource("4_fe7jn")]
+position = Vector2(220, 387)
+rotation = 0.461939
+component_scene = ExtResource("5_lpgml")
 
-[node name="Weapon" parent="Player" instance=ExtResource("2_llrt7")]
-mass = 0.4
-components = Dictionary[Vector2i, PackedScene]({
-Vector2i(0, 0): ExtResource("4_fe7jn"),
-Vector2i(1, 0): ExtResource("4_fe7jn"),
-Vector2i(2, 0): ExtResource("4_fe7jn")
-})
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(577, 364)
