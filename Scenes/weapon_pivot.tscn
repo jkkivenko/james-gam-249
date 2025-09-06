@@ -6,6 +6,7 @@
 [node name="WeaponPivot" type="RigidBody2D" groups=["Weapon"]]
 collision_layer = 4
 collision_mask = 7
+input_pickable = true
 mass = 0.1
 contact_monitor = true
 max_contacts_reported = 5
@@ -18,3 +19,5 @@ attachment_distance_threshold = 100.0
 position = Vector2(0, -100)
 
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_shape_entered" from="." to="." method="_on_mouse_shape_entered"]
