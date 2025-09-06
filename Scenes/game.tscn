@@ -1,18 +1,24 @@
-[gd_scene load_steps=12 format=4 uid="uid://dh21wubx1odjb"]
+[gd_scene load_steps=15 format=4 uid="uid://dh21wubx1odjb"]
 
 [ext_resource type="Texture2D" uid="uid://vsh53w0kddj4" path="res://icon.svg" id="1_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://dl8yi5v1vwkq3" path="res://Scenes/player.tscn" id="2_3dryh"]
 [ext_resource type="Script" uid="uid://cu5yompuo8gcb" path="res://Scripts/enemy.gd" id="3_wowpa"]
 [ext_resource type="PackedScene" uid="uid://bxdeq1ivh4mi3" path="res://Scenes/gügly_eyes.tscn" id="4_3dryh"]
+[ext_resource type="Texture2D" uid="uid://di8a0j646lffh" path="res://art/enemy_1.png" id="4_h4fw4"]
 [ext_resource type="TileSet" uid="uid://dumlhgw7hloka" path="res://Resources/grass_tile_set.tres" id="5_v158k"]
 [ext_resource type="PackedScene" uid="uid://buas4iqytj32k" path="res://Scenes/button.tscn" id="5_wowpa"]
 [ext_resource type="Script" uid="uid://bjbbotk4r002l" path="res://Scripts/button.gd" id="6_i6g32"]
 [ext_resource type="PackedScene" uid="uid://bdc44ouqrma4l" path="res://Scenes/sliding_door.tscn" id="7_1l0tm"]
+[ext_resource type="PackedScene" uid="uid://1i5apjkfmswe" path="res://Scenes/camera.tscn" id="10_ldgsr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2o6t"]
 size = Vector2(1234, 191)
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e2o6t"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h4fw4"]
+radius = 49.0
+height = 98.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_80nbo"]
 size = Vector2(100, 100)
@@ -44,20 +50,19 @@ lock_rotation = true
 script = ExtResource("3_wowpa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
-shape = SubResource("RectangleShape2D_80nbo")
+shape = SubResource("CapsuleShape2D_h4fw4")
 
 [node name="Sprite2D" type="Sprite2D" parent="Enemy"]
-rotation = 3.14159
-scale = Vector2(0.7813, 0.7813)
-texture = ExtResource("1_wrm1d")
+scale = Vector2(0.237, 0.237)
+texture = ExtResource("4_h4fw4")
 
 [node name="GüglyEyes" parent="Enemy/Sprite2D" instance=ExtResource("4_3dryh")]
-position = Vector2(25.75, 1.985)
-scale = Vector2(0.396775, 0.396775)
+position = Vector2(63.38, -81.18)
+scale = Vector2(0.917, 0.917)
 
 [node name="GüglyEyes2" parent="Enemy/Sprite2D" instance=ExtResource("4_3dryh")]
-position = Vector2(-26.71, -3.02)
-scale = Vector2(0.396775, 0.396775)
+position = Vector2(-60.59, -76.705)
+scale = Vector2(0.857, 0.857)
 
 [node name="Button" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("5_wowpa")]
 position = Vector2(220, 496)
@@ -95,5 +100,18 @@ scale = Vector2(0.396775, 0.396775)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(1.563, 1.563)
-tile_map_data = PackedByteArray("AAAAAAUAAQABAAAAAAABAAUAAQACAAAAAAACAAUAAQACAAAAAAADAAUAAQACAAAAAAAEAAUAAQACAAAAAAAFAAUAAQACAAAAAAAGAAUAAQACAAAAAAAHAAUAAQACAAAAAAAIAAUAAQACAAAAAAAJAAUAAQACAAAAAAAKAAUAAQACAAAAAAALAAUAAQADAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAUAAQACAAIAAAABAAUAAQACAAAAAAACAAUAAQACAAAAAAADAAUAAQACAAAAAAAEAAUAAQACAAAAAAAFAAUAAQACAAAAAAAGAAUAAQACAAAAAAAHAAUAAQACAAAAAAAIAAUAAQACAAAAAAAJAAUAAQACAAAAAAAKAAUAAQACAAAAAAALAAUAAQADAAAAAAADAAQAAAAAAAAAAAACAAQAAAAAAAAAAAABAAQAAAAAAAAAAAAMAAQAAQAFAAMAAAANAAQAAQAGAAMAAAAQAAQAAQAHAAMAAAAOAAQAAQAGAAMAAAAPAAQAAQAGAAMAAAD//wUAAQAAAAAAAAD//wQAAQAAAAAAAAD//wMAAQAAAAAAAAD//wIAAQAAAAAAAAD//wEAAQAEAAAAAAA=")
 tile_set = ExtResource("5_v158k")
+use_kinematic_bodies = true
+navigation_enabled = false
+
+[node name="Camera2D" parent="." instance=ExtResource("10_ldgsr")]
+position = Vector2(597, 334)
+
+[node name="BottomLeft" parent="Camera2D" index="0"]
+position = Vector2(-689, 254)
+
+[node name="TopRight" parent="Camera2D" index="1"]
+position = Vector2(1295, -435)
+
+[editable path="Camera2D"]

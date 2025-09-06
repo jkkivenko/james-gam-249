@@ -1,6 +1,14 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dumlhgw7hloka"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://dumlhgw7hloka"]
 
+[ext_resource type="Texture2D" uid="uid://df0djf6yvjfrq" path="res://art/player_exclusion.png" id="1_5gt8k"]
 [ext_resource type="Texture2D" uid="uid://8nnrr7btabic" path="res://art/placeholder_tilesheet.png" id="1_6bhjh"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mvngo"]
+resource_name = "Player Exclusion"
+texture = ExtResource("1_5gt8k")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6bhjh"]
 resource_name = "Temp Tileset"
@@ -380,4 +388,6 @@ texture_region_size = Vector2i(64, 64)
 [resource]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
+physics_layer_1/collision_layer = 8
 sources/1 = SubResource("TileSetAtlasSource_6bhjh")
+sources/0 = SubResource("TileSetAtlasSource_mvngo")

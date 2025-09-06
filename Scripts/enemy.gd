@@ -19,7 +19,7 @@ func enemy_move(_delta):
 	if movement_type == MovementTypes.CONTINUOUS:
 		var movement_direction: float = sign(GameManager.player.global_position.x - global_position.x)
 		if (abs(linear_velocity.x) < max_movement_speed):
-			apply_force(Vector2(movement_force_magnitude * movement_direction, 0.0))
+			apply_force(Vector2(movement_force_magnitude * movement_direction, 10.0))
 
 func enemy_animate(_delta):
 	if animation_type == AnimationTypes.DOBEDOBEDOBEDO:

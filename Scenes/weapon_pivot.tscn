@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bqj8wf1b8vux2" path="res://Scenes/hilt.tscn" id="2_1c5ut"]
 
 [node name="WeaponPivot" type="RigidBody2D" groups=["Weapon"]]
+collision_layer = 4
+collision_mask = 7
 mass = 0.1
 contact_monitor = true
 max_contacts_reported = 5
