@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameManager="*res://Scripts/game_manager.gd"
-PickupManager="*res://Scripts/pickup_manager.gd"
 
 [global_group]
 

@@ -30,3 +30,5 @@ node_a = NodePath("..")
 node_b = NodePath("../WeaponPivot")
 
 [node name="WeaponPivot" parent="." instance=ExtResource("3_6t5aa")]
+collision_layer = 1
+collision_mask = 1
