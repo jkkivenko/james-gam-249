@@ -123,9 +123,13 @@ func add_component(component : HammerComponent) -> bool:
 		collision_test_area.remove_child(component)
 		collision_test_area.queue_free()
 		if is_colliding:
+			# As it was, not it is again
 			old_parent.add_child(component)
 			component.rotation = 0
 			component.position = Vector2.ZERO
+			component.scale = Vector2.ONE
+			closest_attachment_point_self.attached_point = null
+			closest_attachment_point_other.attached_point = null
 			return false
 		# Finally, add the component to the hammer
 		# Have to recalculate these because the hammer might have moved during the await step
