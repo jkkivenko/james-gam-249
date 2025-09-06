@@ -150,6 +150,20 @@ func _on_mouse_shape_entered(shape_idx):
 func _on_mouse_exited():
 	hovered_component = null
 
-#func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	#print(body.shape_owner_get_owner(body.shape_find_owner(body_shape_index)))
-	#print(shape_owner_get_owner(self.shape_find_owner(local_shape_index)))
+func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+	# tilemap bad
+	if not "shape_find_owner" in body:
+		return
+	
+	var hit = body.shape_owner_get_owner(body.shape_find_owner(body_shape_index)).get_parent()
+	# ensure you have hit an enemy
+	if not "required_impulse_to_kill" in hit:
+		return
+	
+	var block_that_performed_hit = shape_owner_get_owner(shape_find_owner(local_shape_index))
+	var radial_distance = block_that_performed_hit.position.y
+	
+	var impulse_delivered = abs(angular_velocity * radial_distance * mass)
+	
+	if impulse_delivered > hit.required_impulse_to_kill:
+		hit.kill()

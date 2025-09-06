@@ -1,0 +1,84 @@
+[gd_scene load_steps=14 format=4 uid="uid://caepxlmorghrs"]
+
+[ext_resource type="PackedScene" uid="uid://dl8yi5v1vwkq3" path="res://Scenes/player.tscn" id="2_u1b78"]
+[ext_resource type="Script" uid="uid://cu5yompuo8gcb" path="res://Scripts/enemy.gd" id="3_bdr3p"]
+[ext_resource type="PackedScene" uid="uid://dafcgwkvmg08y" path="res://Scenes/block.tscn" id="4_wwu6c"]
+[ext_resource type="Texture2D" uid="uid://di8a0j646lffh" path="res://art/enemy_1.png" id="5_yymuf"]
+[ext_resource type="PackedScene" uid="uid://bxdeq1ivh4mi3" path="res://Scenes/gügly_eyes.tscn" id="6_esggg"]
+[ext_resource type="PackedScene" uid="uid://buas4iqytj32k" path="res://Scenes/button.tscn" id="7_nolpu"]
+[ext_resource type="Script" uid="uid://bjbbotk4r002l" path="res://Scripts/button.gd" id="8_mcj63"]
+[ext_resource type="PackedScene" uid="uid://bdc44ouqrma4l" path="res://Scenes/sliding_door.tscn" id="9_af2a1"]
+[ext_resource type="TileSet" uid="uid://dumlhgw7hloka" path="res://Resources/grass_tile_set.tres" id="10_ocmlb"]
+[ext_resource type="PackedScene" uid="uid://1i5apjkfmswe" path="res://Scenes/camera.tscn" id="11_tlxhh"]
+[ext_resource type="PackedScene" uid="uid://cttfjhq6eot7b" path="res://Scenes/exit.tscn" id="12_rxhxl"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e2o6t"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h4fw4"]
+radius = 49.0
+height = 98.0
+
+[node name="Game" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("2_u1b78")]
+position = Vector2(348, 438)
+
+[node name="Enemy" type="RigidBody2D" parent="."]
+position = Vector2(736, 436)
+collision_layer = 4
+collision_mask = 7
+physics_material_override = SubResource("PhysicsMaterial_e2o6t")
+lock_rotation = true
+script = ExtResource("3_bdr3p")
+movement_force_magnitude = 1500.0
+component_scene = ExtResource("4_wwu6c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+shape = SubResource("CapsuleShape2D_h4fw4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
+scale = Vector2(0.237, 0.237)
+texture = ExtResource("5_yymuf")
+
+[node name="GüglyEyes" parent="Enemy/Sprite2D" instance=ExtResource("6_esggg")]
+position = Vector2(63.38, -81.18)
+scale = Vector2(0.917, 0.917)
+
+[node name="GüglyEyes2" parent="Enemy/Sprite2D" instance=ExtResource("6_esggg")]
+position = Vector2(-60.59, -76.705)
+scale = Vector2(0.857, 0.857)
+
+[node name="Button" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("7_nolpu")]
+position = Vector2(895, 186)
+rotation = 4.71927
+script = ExtResource("8_mcj63")
+connects_to = [NodePath("../SlidingDoor")]
+
+[node name="SlidingDoor" parent="." instance=ExtResource("9_af2a1")]
+position = Vector2(152, 450)
+rotation = -1.5708
+offset_from_closed = Vector2(0, -110)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+rotation = -0.00202656
+scale = Vector2(1.563, 1.563)
+tile_map_data = PackedByteArray("AAABAAUAAQACAAAAAAD//wUAAQAAAAAAAAD//wQAAQAAAAAAAAD//wMAAQAAAAAAAAD//wIAAQAAAAAAAAD//wEAAQAAAAAAAAAAAAUAAQABAAAAAAABAAEAAQAAAAAAAAAAAAEAAQAAAAAAAAABAAMAAQAAAAEAAAABAAIAAQAAAAAAAAD//wAAAQAAAAAAAAAAAAAAAQAAAAAAAAABAAAAAQAAAAAAAAAAAAIAAQAAAAAAAAADAAAAAQAAAAAAAAADAAUAAQACAAAAAAAEAAAAAQAAAAAAAAAEAAUAAQACAAAAAAAFAAAAAQAAAAAAAAAFAAUAAQACAAAAAAAGAAAAAQAAAAAAAAAGAAUAAQACAAAAAAAHAAAAAQAAAAAAAAAHAAUAAQACAAAAAAAIAAAAAQAAAAAAAAAIAAUAAQADAAAAAAAJAAAAAQAAAAAAAAAJAAUAAQAAAAAAAAACAAAAAQAAAAAAAAACAAUAAQACAAAAAAAJAAEAAQAAAAAAAAAJAAIAAQAAAAAAAAAJAAMAAQAAAAAAAAAJAAQAAQAAAAAAAAA=")
+tile_set = ExtResource("10_ocmlb")
+use_kinematic_bodies = true
+navigation_enabled = false
+
+[node name="Camera2D" parent="." instance=ExtResource("11_tlxhh")]
+position = Vector2(597, 334)
+
+[node name="BottomLeft" parent="Camera2D" index="0"]
+position = Vector2(-689, 254)
+
+[node name="TopRight" parent="Camera2D" index="1"]
+position = Vector2(555, -344)
+
+[node name="Exit" parent="." instance=ExtResource("12_rxhxl")]
+position = Vector2(42, 447)
+collision_mask = 2
+
+[editable path="Player"]
+[editable path="Camera2D"]
