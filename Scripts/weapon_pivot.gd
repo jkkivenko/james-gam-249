@@ -42,7 +42,14 @@ func add_component(component : HammerComponent) -> bool:
 	if min_distance < attachment_distance_threshold:
 		closest_attachment_point_self.attached_point = closest_attachment_point_other
 		closest_attachment_point_other.attached_point = closest_attachment_point_self
-		component.global_position = closest_attachment_point_self.global_position + closest_attachment_point_other.global_position - component.global_position - Vector2(0, 50).rotated(closest_attachment_point_self.rotation)
+		print("Other component's " + closest_attachment_point_other.name + " connected to this component's " + closest_attachment_point_self.name)
+		component.get_parent().remove_child(component)
+		add_child(component)
+		component.rotation = -closest_attachment_point_other.rotation + closest_attachment_point_self.rotation + PI + closest_attachment_point_self.get_parent().rotation
+		print("Calculated a rotation of ", -(closest_attachment_point_self.rotation + closest_attachment_point_other.rotation))
+		var position_offset = (-closest_attachment_point_other.position).rotated(component.global_rotation)
+		print("Offset by ", position_offset)
+		component.global_position = closest_attachment_point_self.global_position + position_offset
 		return true
 	return false
 
