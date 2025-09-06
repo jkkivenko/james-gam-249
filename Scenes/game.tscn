@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dh21wubx1odjb"]
+[gd_scene load_steps=8 format=3 uid="uid://dh21wubx1odjb"]
 
 [ext_resource type="Texture2D" uid="uid://vsh53w0kddj4" path="res://icon.svg" id="1_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://dl8yi5v1vwkq3" path="res://Scenes/player.tscn" id="2_3dryh"]
 [ext_resource type="Script" uid="uid://cu5yompuo8gcb" path="res://Scripts/enemy.gd" id="3_wowpa"]
+[ext_resource type="PackedScene" uid="uid://bxdeq1ivh4mi3" path="res://Scenes/gügly_eyes.tscn" id="4_3dryh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2o6t"]
 size = Vector2(1234, 191)
@@ -41,3 +42,7 @@ shape = SubResource("RectangleShape2D_80nbo")
 rotation = 3.14159
 scale = Vector2(0.7813, 0.7813)
 texture = ExtResource("1_wrm1d")
+
+[node name="GüglyEyes" parent="Enemy/Sprite2D" instance=ExtResource("4_3dryh")]
+position = Vector2(15.6854, 6.10352e-05)
+scale = Vector2(0.396775, 0.396775)

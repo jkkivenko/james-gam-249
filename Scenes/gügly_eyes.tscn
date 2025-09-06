@@ -7,10 +7,9 @@
 [node name="GüglyEyes" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(81, 76)
 texture = ExtResource("1_56uot")
 script = ExtResource("2_ryapi")
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_ajje1")
