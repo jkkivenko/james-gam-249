@@ -5,6 +5,11 @@ class_name WeaponPivot extends RigidBody2D
 @export var shwing_force : float = 200000
 ## Revs per sex
 @export var max_rotation_speed : float = 2
+## The mass of the hilt in kgs
+@export var hilt_mass : float = 0.1:
+	set(new):
+		hilt_mass = new
+		mass = hilt_mass
 ## Key: a location in the tool. Value: What item is at that location
 @export var components : Dictionary[Vector2i, PackedScene]:
 	set(new):
@@ -23,7 +28,7 @@ func instantiate_components():
 	for child in get_children():
 		if child is HammerComponent:
 			child.queue_free()
-		mass = 0.1
+		mass = hilt_mass
 	for location in components.keys():
 		var component : HammerComponent = components[location].instantiate()
 		add_child(component, true)

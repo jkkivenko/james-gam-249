@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dh21wubx1odjb"]
+[gd_scene load_steps=7 format=3 uid="uid://dh21wubx1odjb"]
 
-[ext_resource type="Texture2D" uid="uid://vsh53w0kddj4" path="res://icon.svg" id="1_80nbo"]
-[ext_resource type="Script" uid="uid://c7nur06hfx4mf" path="res://player_controller.gd" id="2_e2o6t"]
-[ext_resource type="Texture2D" uid="uid://d1hiuc0dcaa7n" path="res://art/protag.png" id="3_fc0e3"]
-[ext_resource type="Script" uid="uid://cgciptackg8nh" path="res://Scripts/enemy.gd" id="3_feb5d"]
+[ext_resource type="Texture2D" uid="uid://vsh53w0kddj4" path="res://icon.svg" id="1_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://dl8yi5v1vwkq3" path="res://Scenes/player.tscn" id="2_3dryh"]
+[ext_resource type="Script" uid="uid://cu5yompuo8gcb" path="res://Scripts/enemy.gd" id="3_wowpa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2o6t"]
 size = Vector2(1234, 191)
@@ -23,30 +22,17 @@ shape = SubResource("RectangleShape2D_e2o6t")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 scale = Vector2(9.6406, 1.57813)
-texture = ExtResource("1_80nbo")
+texture = ExtResource("1_wrm1d")
 
-[node name="Player" type="RigidBody2D" parent="."]
+[node name="Player" parent="." instance=ExtResource("2_3dryh")]
 position = Vector2(591, 450)
-mass = 0.1
-physics_material_override = SubResource("PhysicsMaterial_e2o6t")
-lock_rotation = true
-script = ExtResource("2_e2o6t")
-movement_force_magnitude = 600.0
-max_movement_speed = 500.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("RectangleShape2D_80nbo")
-
-[node name="Sprite2D" type="Sprite2D" parent="Player"]
-scale = Vector2(0.237, 0.237)
-texture = ExtResource("3_fc0e3")
 
 [node name="Enemy" type="RigidBody2D" parent="."]
 position = Vector2(1016, 460)
 mass = 0.1
 physics_material_override = SubResource("PhysicsMaterial_e2o6t")
 lock_rotation = true
-script = ExtResource("3_feb5d")
+script = ExtResource("3_wowpa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
 shape = SubResource("RectangleShape2D_80nbo")
@@ -54,4 +40,4 @@ shape = SubResource("RectangleShape2D_80nbo")
 [node name="Sprite2D" type="Sprite2D" parent="Enemy"]
 rotation = 3.14159
 scale = Vector2(0.7813, 0.7813)
-texture = ExtResource("1_80nbo")
+texture = ExtResource("1_wrm1d")

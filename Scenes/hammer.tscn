@@ -1,9 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://b81b7gfiot1ei"]
+[gd_scene load_steps=5 format=3 uid="uid://b81b7gfiot1ei"]
 
 [ext_resource type="Script" uid="uid://b8jlnpiwhkovb" path="res://Scripts/weapon_pivot.gd" id="1_010gp"]
 [ext_resource type="Texture2D" uid="uid://vsh53w0kddj4" path="res://icon.svg" id="2_l8gpf"]
-[ext_resource type="PackedScene" uid="uid://dafcgwkvmg08y" path="res://Scenes/block.tscn" id="2_nvmri"]
-[ext_resource type="Script" uid="uid://cl1xu3it2xahs" path="res://Scripts/block.gd" id="4_ry3hk"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_itlcx"]
 friction = 0.1
@@ -11,17 +9,11 @@ friction = 0.1
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mb55d"]
 size = Vector2(100, 100)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fsd7l"]
-size = Vector2(100, 100)
-
-[node name="Weapon" type="RigidBody2D"]
-mass = 2.1
+[node name="Hammer" type="RigidBody2D"]
+mass = 0.1
 physics_material_override = SubResource("PhysicsMaterial_itlcx")
 script = ExtResource("1_010gp")
-components = Dictionary[Vector2i, PackedScene]({
-Vector2i(0, 0): ExtResource("2_nvmri"),
-Vector2i(1, 0): ExtResource("2_nvmri")
-})
+shwing_force = 2000.0
 
 [node name="Hilt" type="CollisionShape2D" parent="."]
 position = Vector2(120, 0)
@@ -30,13 +22,3 @@ shape = SubResource("RectangleShape2D_mb55d")
 [node name="HiltSprite" type="Sprite2D" parent="Hilt"]
 scale = Vector2(0.7813, 0.7813)
 texture = ExtResource("2_l8gpf")
-
-[node name="Block3" type="CollisionShape2D" parent="." instance=ExtResource("2_nvmri")]
-position = Vector2(220, 0)
-shape = SubResource("RectangleShape2D_fsd7l")
-script = ExtResource("4_ry3hk")
-
-[node name="Block4" type="CollisionShape2D" parent="." instance=ExtResource("2_nvmri")]
-position = Vector2(320, 0)
-shape = SubResource("RectangleShape2D_fsd7l")
-script = ExtResource("4_ry3hk")

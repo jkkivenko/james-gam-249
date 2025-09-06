@@ -9,6 +9,7 @@ size = Vector2(100, 100)
 [node name="Block" type="CollisionShape2D"]
 shape = SubResource("RectangleShape2D_fsd7l")
 script = ExtResource("1_ejx3s")
+mass = 0.1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.784, 0.784)

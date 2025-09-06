@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dl8yi5v1vwkq3"]
+
+[ext_resource type="Script" uid="uid://dvy0hwhhqi1oy" path="res://player_controller.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://d1hiuc0dcaa7n" path="res://art/protag.png" id="2_6t5aa"]
+[ext_resource type="PackedScene" uid="uid://b81b7gfiot1ei" path="res://Scenes/hammer.tscn" id="3_6t5aa"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e2o6t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_80nbo"]
+size = Vector2(100, 100)
+
+[node name="Player" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_e2o6t")
+lock_rotation = true
+script = ExtResource("1_cvnsp")
+movement_force_magnitude = 600.0
+max_movement_speed = 500.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_80nbo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.237, 0.237)
+texture = ExtResource("2_6t5aa")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+node_a = NodePath("..")
+node_b = NodePath("../Hammer")
+
+[node name="Hammer" parent="." instance=ExtResource("3_6t5aa")]
+shwing_force = 500000.0
