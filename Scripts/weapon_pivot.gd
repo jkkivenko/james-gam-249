@@ -33,7 +33,7 @@ func _process(_delta):
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and hovered_component:
 		disconnect_component(hovered_component)
 		for disconnected_component in get_disconnected_components():
-			#print("THERE IS A DISCONNECTED COMPONENT!!!!!!!!!!!!!!!!!!!")
+			print("THERE IS A DISCONNECTED COMPONENT!!!!!!!!!!!!!!!!!!!")
 			disconnect_component(disconnected_component, false)
 
 func disconnect_component(component : HammerComponent, should_create_held_object : bool = true):
@@ -73,8 +73,8 @@ func get_disconnected_components() -> Array[HammerComponent]:
 func get_all_attached_components(root : HammerComponent = $Hilt, visited_components : Array[HammerComponent] = []) -> Array[HammerComponent]:
 	visited_components.append(root)
 	for attachment_point in root.get_attachment_points():
-		if attachment_point.get_parent() not in visited_components:
-			visited_components += get_all_attached_components(attachment_point.get_parent(), visited_components)
+		if attachment_point.attached_point and attachment_point.attached_point.get_parent() not in visited_components:
+			visited_components += get_all_attached_components(attachment_point.attached_point.get_parent(), visited_components)
 	return visited_components
 
 func _physics_process(_delta):
