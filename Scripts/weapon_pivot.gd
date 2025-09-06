@@ -165,5 +165,5 @@ func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index)
 	
 	var impulse_delivered = abs(angular_velocity * radial_distance * mass)
 	
-	if impulse_delivered > hit.required_impulse_to_kill:
+	if impulse_delivered > hit.required_impulse_to_kill or block_that_performed_hit.is_spiky:
 		hit.kill()
