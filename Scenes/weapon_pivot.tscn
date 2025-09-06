@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b8jlnpiwhkovb" path="res://Scripts/weapon_pivot.gd" id="1_7vne0"]
 [ext_resource type="PackedScene" uid="uid://bqj8wf1b8vux2" path="res://Scenes/hilt.tscn" id="2_1c5ut"]
 
-[node name="WeaponPivot" type="RigidBody2D"]
+[node name="WeaponPivot" type="RigidBody2D" groups=["Weapon"]]
 mass = 0.1
 contact_monitor = true
 max_contacts_reported = 5

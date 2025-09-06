@@ -1,30 +1,19 @@
 @tool
-class_name ComponentEntity extends RigidBody2D
+class_name PhysicsEntity extends RigidBody2D
 
 @export var component_scene : PackedScene:
 	set(new):
 		component_scene = new
 		reset_component()
 
+var held_entity_scene : PackedScene = load("res://Scenes/held_entity.tscn")
 var hovered : bool = false
-var held : bool = false
 
 func _process(_delta):
 	if not Engine.is_editor_hint():
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-			if hovered:
-				held = true
-		else:
-			held = false
-	if held:
-		rotation = 0
-		freeze = true
-		collision_mask -= 4
-		var direction_to_mouse = get_viewport().get_mouse_position() - get_global_transform_with_canvas().origin
-		position += direction_to_mouse
-	else:
-		freeze = false
-		collision_mask -= 4
+		#print("I'm a physics entity!")
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and hovered:
+			create_held_entity()
 
 func reset_component():
 	for child in get_children():
@@ -38,10 +27,15 @@ func reset_component():
 		else:
 			push_error("Tried to attach a component that isn't a HammerComponent!")
 
+func create_held_entity():
+	var held_entity : HeldEntity = held_entity_scene.instantiate()
+	add_sibling(held_entity)
+	held_entity.transform = transform
+	held_entity.component_scene = component_scene
+	queue_free()
+
 func _on_mouse_entered():
-	print("ENTER")
 	hovered = true
 
 func _on_mouse_exited():
-	print("EXIT")
 	hovered = false

@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://dw81ctxi12y6v"]
 
-[ext_resource type="Script" uid="uid://by7xfrg6rheja" path="res://Scripts/component_entity.gd" id="1_8r0by"]
+[ext_resource type="Script" uid="uid://by7xfrg6rheja" path="res://Scripts/physics_entity.gd" id="1_8r0by"]
 
-[node name="ComponentEntity" type="RigidBody2D" groups=["Component Entities"]]
+[node name="PhysicsEntity" type="RigidBody2D" groups=["Component Entities"]]
 collision_layer = 4
 collision_mask = 7
 input_pickable = true

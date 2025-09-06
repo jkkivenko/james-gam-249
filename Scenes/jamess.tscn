@@ -1,18 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://ekx6m0e8ufcf"]
+[gd_scene load_steps=6 format=3 uid="uid://ekx6m0e8ufcf"]
 
 [ext_resource type="Texture2D" uid="uid://vsh53w0kddj4" path="res://icon.svg" id="1_llrt7"]
 [ext_resource type="PackedScene" uid="uid://dl8yi5v1vwkq3" path="res://Scenes/player.tscn" id="2_f8181"]
-[ext_resource type="Script" uid="uid://cu5yompuo8gcb" path="res://Scripts/enemy.gd" id="3_fe7jn"]
-[ext_resource type="PackedScene" uid="uid://dw81ctxi12y6v" path="res://Scenes/component_entity.tscn" id="4_fe7jn"]
+[ext_resource type="PackedScene" uid="uid://dw81ctxi12y6v" path="res://Scenes/physics_entity.tscn" id="4_fe7jn"]
 [ext_resource type="PackedScene" uid="uid://dafcgwkvmg08y" path="res://Scenes/block.tscn" id="5_lpgml"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2o6t"]
 size = Vector2(1234, 191)
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e2o6t"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_80nbo"]
-size = Vector2(100, 100)
 
 [node name="Game" type="Node2D"]
 
@@ -30,25 +24,25 @@ texture = ExtResource("1_llrt7")
 [node name="Player" parent="." instance=ExtResource("2_f8181")]
 position = Vector2(591, 450)
 
-[node name="Enemy" type="RigidBody2D" parent="."]
-position = Vector2(1016, 460)
-mass = 0.1
-physics_material_override = SubResource("PhysicsMaterial_e2o6t")
-lock_rotation = true
-script = ExtResource("3_fe7jn")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
-shape = SubResource("RectangleShape2D_80nbo")
-
-[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
-rotation = 3.14159
-scale = Vector2(0.7813, 0.7813)
-texture = ExtResource("1_llrt7")
-
-[node name="ComponentEntity" parent="." instance=ExtResource("4_fe7jn")]
-position = Vector2(220, 387)
-rotation = 0.461939
-component_scene = ExtResource("5_lpgml")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(577, 364)
+
+[node name="PhysicsEntity" parent="." instance=ExtResource("4_fe7jn")]
+position = Vector2(102, 154)
+component_scene = ExtResource("5_lpgml")
+
+[node name="PhysicsEntity2" parent="." instance=ExtResource("4_fe7jn")]
+position = Vector2(475, 134)
+component_scene = ExtResource("5_lpgml")
+
+[node name="PhysicsEntity3" parent="." instance=ExtResource("4_fe7jn")]
+position = Vector2(120, 413)
+component_scene = ExtResource("5_lpgml")
+
+[node name="PhysicsEntity4" parent="." instance=ExtResource("4_fe7jn")]
+position = Vector2(293, 443)
+component_scene = ExtResource("5_lpgml")
+
+[node name="PhysicsEntity5" parent="." instance=ExtResource("4_fe7jn")]
+position = Vector2(314, 249)
+component_scene = ExtResource("5_lpgml")
