@@ -1,28 +1,28 @@
 class_name Enemy extends RigidBody2D
 
-enum movement_types { CONTINUOUS }
-enum animation_types { DOBEDOBEDOBEDO }
+enum MovementTypes { CONTINUOUS }
+enum AnimationTypes { DOBEDOBEDOBEDO }
 
 const dobedobedobedo_angle = 7
 
 @export var animation_fps: float = 1.5
-@export var animation_type: animation_types = animation_types.DOBEDOBEDOBEDO
+@export var animation_type: AnimationTypes = AnimationTypes.DOBEDOBEDOBEDO
 @onready var seconds_per_frame = 1 / animation_fps
 var animation_timer: float = 0.0
 var animation_state: int = 0
 
 @export var movement_force_magnitude: float = 150.0
 @export var max_movement_speed: float = 75.0
-@export var movement_type: movement_types = movement_types.CONTINUOUS
+@export var movement_type: MovementTypes = MovementTypes.CONTINUOUS
 
 func enemy_move(_delta):
-	if movement_type == movement_types.CONTINUOUS:
+	if movement_type == MovementTypes.CONTINUOUS:
 		var movement_direction: float = sign(GameManager.player.global_position.x - global_position.x)
 		if (abs(linear_velocity.x) < max_movement_speed):
 			apply_force(Vector2(movement_force_magnitude * movement_direction, 0.0))
 
 func enemy_animate(_delta):
-	if animation_type == animation_types.DOBEDOBEDOBEDO:
+	if animation_type == AnimationTypes.DOBEDOBEDOBEDO:
 		if abs(linear_velocity.x) < 20:
 			$Sprite2D.rotation_degrees = 0
 			return
@@ -34,7 +34,7 @@ func enemy_animate(_delta):
 			animation_timer = 0
 
 func _ready():
-	if animation_type == animation_types.DOBEDOBEDOBEDO:
+	if animation_type == AnimationTypes.DOBEDOBEDOBEDO:
 		animation_state = 1
 
 func _process(_delta: float):

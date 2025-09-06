@@ -15,7 +15,7 @@ func _process(delta: float):
 		
 	#position = get_global_mouse_position()
 	
-	print(pupil_velocity)
+	#print(global_rotation)
 	
 	pupil_velocity -= global_position - prev_pos
 	prev_pos = global_position
