@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://dh21wubx1odjb"]
+[gd_scene load_steps=16 format=4 uid="uid://dh21wubx1odjb"]
 
 [ext_resource type="Texture2D" uid="uid://vsh53w0kddj4" path="res://icon.svg" id="1_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://dl8yi5v1vwkq3" path="res://Scenes/player.tscn" id="2_3dryh"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bjbbotk4r002l" path="res://Scripts/button.gd" id="6_i6g32"]
 [ext_resource type="PackedScene" uid="uid://bdc44ouqrma4l" path="res://Scenes/sliding_door.tscn" id="7_1l0tm"]
 [ext_resource type="PackedScene" uid="uid://1i5apjkfmswe" path="res://Scenes/camera.tscn" id="10_ldgsr"]
+[ext_resource type="PackedScene" uid="uid://cttfjhq6eot7b" path="res://Scenes/exit.tscn" id="11_o5yvi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2o6t"]
 size = Vector2(1234, 191)
@@ -113,5 +114,9 @@ position = Vector2(-689, 254)
 
 [node name="TopRight" parent="Camera2D" index="1"]
 position = Vector2(1295, -435)
+
+[node name="Exit" parent="." instance=ExtResource("11_o5yvi")]
+position = Vector2(1661, 344)
+collision_mask = 2
 
 [editable path="Camera2D"]

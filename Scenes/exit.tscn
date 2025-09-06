@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cttfjhq6eot7b"]
+
+[ext_resource type="Texture2D" uid="uid://blkjw1bj60tgr" path="res://art/Dor.png" id="1_35a55"]
+[ext_resource type="Script" uid="uid://cmrqx12jvlexc" path="res://Scripts/exit_controller.gd" id="1_ljsmn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_35a55"]
+radius = 34.0
+height = 90.0
+
+[node name="Exit" type="Area2D"]
+script = ExtResource("1_ljsmn")
+
+[node name="Dor" type="Sprite2D" parent="."]
+texture = ExtResource("1_35a55")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_35a55")
