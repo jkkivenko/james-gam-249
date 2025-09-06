@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxdeq1ivh4mi3"]
+
+[ext_resource type="Texture2D" uid="uid://bcv742fmsgq2t" path="res://art/white_circle.png" id="1_56uot"]
+[ext_resource type="Texture2D" uid="uid://cbk0kksik1yxn" path="res://art/circle.png" id="1_ajje1"]
+[ext_resource type="Script" uid="uid://cul5dgpyalj6" path="res://Scripts/gügly_eye_controller.gd" id="2_ryapi"]
+
+[node name="GüglyEyes" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(81, 76)
+texture = ExtResource("1_56uot")
+script = ExtResource("2_ryapi")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_ajje1")
