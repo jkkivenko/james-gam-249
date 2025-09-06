@@ -6,8 +6,9 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e2o6t"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_80nbo"]
-size = Vector2(100, 100)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6t5aa"]
+radius = 50.0
+height = 100.0
 
 [node name="Player" type="RigidBody2D"]
 collision_layer = 2
@@ -19,7 +20,7 @@ movement_force_magnitude = 3000.0
 max_movement_speed = 500.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_80nbo")
+shape = SubResource("CapsuleShape2D_6t5aa")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.237, 0.237)
@@ -31,4 +32,3 @@ node_b = NodePath("../WeaponPivot")
 
 [node name="WeaponPivot" parent="." instance=ExtResource("3_6t5aa")]
 collision_layer = 1
-collision_mask = 1

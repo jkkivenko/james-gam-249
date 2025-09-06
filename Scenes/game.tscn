@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dh21wubx1odjb"]
+[gd_scene load_steps=18 format=4 uid="uid://dh21wubx1odjb"]
 
 [ext_resource type="Texture2D" uid="uid://vsh53w0kddj4" path="res://icon.svg" id="1_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://dl8yi5v1vwkq3" path="res://Scenes/player.tscn" id="2_3dryh"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://bdc44ouqrma4l" path="res://Scenes/sliding_door.tscn" id="7_1l0tm"]
 [ext_resource type="PackedScene" uid="uid://1i5apjkfmswe" path="res://Scenes/camera.tscn" id="10_ldgsr"]
 [ext_resource type="PackedScene" uid="uid://cttfjhq6eot7b" path="res://Scenes/exit.tscn" id="11_o5yvi"]
+[ext_resource type="PackedScene" uid="uid://bwmfqse5rocjw" path="res://Scenes/physics_entity.tscn" id="12_rfjv2"]
+[ext_resource type="PackedScene" uid="uid://dafcgwkvmg08y" path="res://Scenes/block.tscn" id="13_1phco"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2o6t"]
 size = Vector2(1234, 191)
@@ -44,11 +46,10 @@ position = Vector2(597, 434)
 position = Vector2(1020, 411)
 collision_layer = 4
 collision_mask = 7
-mass = 0.1
 physics_material_override = SubResource("PhysicsMaterial_e2o6t")
-can_sleep = false
 lock_rotation = true
 script = ExtResource("3_wowpa")
+movement_force_magnitude = 1500.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
 shape = SubResource("CapsuleShape2D_h4fw4")
@@ -119,4 +120,13 @@ position = Vector2(1295, -435)
 position = Vector2(1661, 344)
 collision_mask = 2
 
+[node name="PhysicsEntity2" parent="." instance=ExtResource("12_rfjv2")]
+position = Vector2(786, 359)
+component_scene = ExtResource("13_1phco")
+
+[node name="PhysicsEntity" parent="." instance=ExtResource("12_rfjv2")]
+position = Vector2(781, 199)
+component_scene = ExtResource("13_1phco")
+
+[editable path="Player"]
 [editable path="Camera2D"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://dw81ctxi12y6v"]
+[gd_scene load_steps=2 format=3 uid="uid://bwmfqse5rocjw"]
 
 [ext_resource type="Script" uid="uid://by7xfrg6rheja" path="res://Scripts/physics_entity.gd" id="1_8r0by"]
 

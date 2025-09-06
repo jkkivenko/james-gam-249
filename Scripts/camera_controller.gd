@@ -9,5 +9,5 @@ func _ready() -> void:
 	limit_right = round(top_right_pos.x)
 	limit_top = round(top_right_pos.y)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	global_position = GameManager.player.global_position
