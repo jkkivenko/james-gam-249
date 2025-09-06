@@ -35,6 +35,8 @@ position = Vector2(597, 434)
 
 [node name="Enemy" type="RigidBody2D" parent="."]
 position = Vector2(1020, 411)
+collision_layer = 4
+collision_mask = 7
 mass = 0.1
 physics_material_override = SubResource("PhysicsMaterial_e2o6t")
 can_sleep = false
@@ -64,10 +66,12 @@ button_type = 1
 connects_to = [NodePath("../SlidingDoor")]
 
 [node name="SlidingDoor" parent="." instance=ExtResource("7_1l0tm")]
-position = Vector2(361, 287)
+position = Vector2(359, 251)
 
 [node name="InertBox" type="RigidBody2D" parent="."]
-position = Vector2(373, 215)
+position = Vector2(360, 170)
+collision_layer = 4
+collision_mask = 7
 mass = 0.1
 physics_material_override = SubResource("PhysicsMaterial_e2o6t")
 can_sleep = false
