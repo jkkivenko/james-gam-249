@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dh21wubx1odjb"]
+[gd_scene load_steps=11 format=3 uid="uid://dh21wubx1odjb"]
 
 [ext_resource type="Texture2D" uid="uid://vsh53w0kddj4" path="res://icon.svg" id="1_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://dl8yi5v1vwkq3" path="res://Scenes/player.tscn" id="2_3dryh"]
 [ext_resource type="Script" uid="uid://cu5yompuo8gcb" path="res://Scripts/enemy.gd" id="3_wowpa"]
+[ext_resource type="PackedScene" uid="uid://bxdeq1ivh4mi3" path="res://Scenes/gügly_eyes.tscn" id="4_3dryh"]
+[ext_resource type="PackedScene" uid="uid://buas4iqytj32k" path="res://Scenes/button.tscn" id="5_wowpa"]
+[ext_resource type="Script" uid="uid://bjbbotk4r002l" path="res://Scripts/button.gd" id="6_i6g32"]
+[ext_resource type="PackedScene" uid="uid://bdc44ouqrma4l" path="res://Scenes/sliding_door.tscn" id="7_1l0tm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2o6t"]
 size = Vector2(1234, 191)
@@ -28,9 +32,10 @@ texture = ExtResource("1_wrm1d")
 position = Vector2(591, 450)
 
 [node name="Enemy" type="RigidBody2D" parent="."]
-position = Vector2(1016, 460)
+position = Vector2(1016, 459)
 mass = 0.1
 physics_material_override = SubResource("PhysicsMaterial_e2o6t")
+can_sleep = false
 lock_rotation = true
 script = ExtResource("3_wowpa")
 
@@ -41,3 +46,43 @@ shape = SubResource("RectangleShape2D_80nbo")
 rotation = 3.14159
 scale = Vector2(0.7813, 0.7813)
 texture = ExtResource("1_wrm1d")
+
+[node name="GüglyEyes" parent="Enemy/Sprite2D" instance=ExtResource("4_3dryh")]
+position = Vector2(25.75, 1.985)
+scale = Vector2(0.396775, 0.396775)
+
+[node name="GüglyEyes2" parent="Enemy/Sprite2D" instance=ExtResource("4_3dryh")]
+position = Vector2(-26.71, -3.02)
+scale = Vector2(0.396775, 0.396775)
+
+[node name="Button" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("5_wowpa")]
+position = Vector2(221, 547)
+script = ExtResource("6_i6g32")
+button_type = 1
+connects_to = [NodePath("../SlidingDoor")]
+
+[node name="SlidingDoor" parent="." instance=ExtResource("7_1l0tm")]
+position = Vector2(361, 287)
+
+[node name="InertBox" type="RigidBody2D" parent="."]
+position = Vector2(373, 215)
+mass = 0.1
+physics_material_override = SubResource("PhysicsMaterial_e2o6t")
+can_sleep = false
+lock_rotation = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InertBox"]
+shape = SubResource("RectangleShape2D_80nbo")
+
+[node name="Sprite2D" type="Sprite2D" parent="InertBox"]
+rotation = 3.14159
+scale = Vector2(0.7813, 0.7813)
+texture = ExtResource("1_wrm1d")
+
+[node name="GüglyEyes" parent="InertBox/Sprite2D" instance=ExtResource("4_3dryh")]
+position = Vector2(25.75, 1.985)
+scale = Vector2(0.396775, 0.396775)
+
+[node name="GüglyEyes2" parent="InertBox/Sprite2D" instance=ExtResource("4_3dryh")]
+position = Vector2(-26.71, -3.02)
+scale = Vector2(0.396775, 0.396775)

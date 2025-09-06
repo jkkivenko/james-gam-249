@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdc44ouqrma4l"]
+
+[ext_resource type="Texture2D" uid="uid://vsh53w0kddj4" path="res://icon.svg" id="1_bqict"]
+[ext_resource type="Script" uid="uid://ckbbwk7q81ivf" path="res://Scripts/door_controller.gd" id="1_c0sr0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bqict"]
+size = Vector2(100, 10)
+
+[node name="SlidingDoor" type="AnimatableBody2D"]
+script = ExtResource("1_c0sr0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bqict")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.781, 0.078)
+texture = ExtResource("1_bqict")
