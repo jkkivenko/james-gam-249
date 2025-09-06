@@ -13,8 +13,9 @@ var hovered : bool = false
 func _process(_delta):
 	if not Engine.is_editor_hint():
 		#print("I'm a physics entity!")
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and hovered:
+		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and hovered and not GameManager.is_holding_a_component:
 			create_held_entity()
+			GameManager.is_holding_a_component = true
 
 func reset_component():
 	if component:

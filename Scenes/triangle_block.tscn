@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://curlnjnnyvyuc"]
+
+[ext_resource type="Script" uid="uid://t3j8047r2pwx" path="res://Scripts/hammer_component.gd" id="1_8bouk"]
+[ext_resource type="Texture2D" uid="uid://dlq0tases6osy" path="res://art/trigle.png" id="2_8bouk"]
+[ext_resource type="PackedScene" uid="uid://b0x3aihndppp2" path="res://Scenes/attachment_point.tscn" id="3_bfkoc"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_y0taa"]
+points = PackedVector2Array(0, -42, 50, 41, -50, 41)
+
+[node name="Block" type="CollisionShape2D"]
+shape = SubResource("ConvexPolygonShape2D_y0taa")
+script = ExtResource("1_8bouk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, 0)
+texture = ExtResource("2_8bouk")
+
+[node name="AttachmentPoint" parent="." instance=ExtResource("3_bfkoc")]
+position = Vector2(-24, 0)
+rotation = -1.0472
+
+[node name="AttachmentPoint2" parent="." instance=ExtResource("3_bfkoc")]
+position = Vector2(24, 0)
+rotation = 1.0472
+
+[node name="AttachmentPoint3" parent="." instance=ExtResource("3_bfkoc")]
+position = Vector2(-1, 42)
+rotation = 3.14159

@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsfv5pgwdkgqx"]
+
+[ext_resource type="Script" uid="uid://t3j8047r2pwx" path="res://Scripts/hammer_component.gd" id="1_rdl4o"]
+[ext_resource type="Texture2D" uid="uid://vsh53w0kddj4" path="res://icon.svg" id="2_abpb6"]
+[ext_resource type="PackedScene" uid="uid://b0x3aihndppp2" path="res://Scenes/attachment_point.tscn" id="3_ugs80"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejx3s"]
+size = Vector2(200, 100)
+
+[node name="Block" type="CollisionShape2D"]
+shape = SubResource("RectangleShape2D_ejx3s")
+script = ExtResource("1_rdl4o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-7.62939e-06, 0)
+scale = Vector2(1.568, 0.784)
+texture = ExtResource("2_abpb6")
+
+[node name="Left" parent="." instance=ExtResource("3_ugs80")]
+position = Vector2(-100, 0)
+rotation = -1.5708
+
+[node name="TopLeft" parent="." instance=ExtResource("3_ugs80")]
+position = Vector2(-50, -50)
+
+[node name="TopRight" parent="." instance=ExtResource("3_ugs80")]
+position = Vector2(50, -50)
+
+[node name="BottomLeft" parent="." instance=ExtResource("3_ugs80")]
+position = Vector2(-50, 50)
+rotation = 3.14159
+
+[node name="BottomRight" parent="." instance=ExtResource("3_ugs80")]
+position = Vector2(50, 50)
+rotation = 3.14159
+
+[node name="Right" parent="." instance=ExtResource("3_ugs80")]
+position = Vector2(100, 0)
+rotation = 1.5708

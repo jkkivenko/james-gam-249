@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://ekx6m0e8ufcf"]
+[gd_scene load_steps=7 format=3 uid="uid://ekx6m0e8ufcf"]
 
 [ext_resource type="Texture2D" uid="uid://vsh53w0kddj4" path="res://icon.svg" id="1_llrt7"]
 [ext_resource type="PackedScene" uid="uid://dl8yi5v1vwkq3" path="res://Scenes/player.tscn" id="2_f8181"]
-[ext_resource type="PackedScene" uid="uid://dw81ctxi12y6v" path="res://Scenes/physics_entity.tscn" id="4_fe7jn"]
+[ext_resource type="PackedScene" uid="uid://bwmfqse5rocjw" path="res://Scenes/physics_entity.tscn" id="4_fe7jn"]
 [ext_resource type="PackedScene" uid="uid://dafcgwkvmg08y" path="res://Scenes/block.tscn" id="5_lpgml"]
+[ext_resource type="PackedScene" uid="uid://bsfv5pgwdkgqx" path="res://Scenes/long_block.tscn" id="5_nanmf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2o6t"]
-size = Vector2(1234, 191)
+size = Vector2(4010, 191)
 
 [node name="Game" type="Node2D"]
 
@@ -18,7 +19,7 @@ collision_mask = 7
 shape = SubResource("RectangleShape2D_e2o6t")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-scale = Vector2(9.6406, 1.57813)
+scale = Vector2(30, 1.5781)
 texture = ExtResource("1_llrt7")
 
 [node name="Player" parent="." instance=ExtResource("2_f8181")]
@@ -27,22 +28,18 @@ position = Vector2(591, 450)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(577, 364)
 
-[node name="PhysicsEntity" parent="." instance=ExtResource("4_fe7jn")]
-position = Vector2(212, 165)
-component_scene = ExtResource("5_lpgml")
-
 [node name="PhysicsEntity2" parent="." instance=ExtResource("4_fe7jn")]
-position = Vector2(104, 375)
+position = Vector2(860, 418)
 component_scene = ExtResource("5_lpgml")
 
 [node name="PhysicsEntity4" parent="." instance=ExtResource("4_fe7jn")]
-position = Vector2(418, 185)
+position = Vector2(1014, 312)
 component_scene = ExtResource("5_lpgml")
 
-[node name="PhysicsEntity5" parent="." instance=ExtResource("4_fe7jn")]
-position = Vector2(72, 150)
+[node name="PhysicsEntity15" parent="." instance=ExtResource("4_fe7jn")]
+position = Vector2(871, 267)
 component_scene = ExtResource("5_lpgml")
 
-[node name="PhysicsEntity3" parent="." instance=ExtResource("4_fe7jn")]
-position = Vector2(369, 415)
-component_scene = ExtResource("5_lpgml")
+[node name="PhysicsEntity" parent="." instance=ExtResource("4_fe7jn")]
+position = Vector2(306, 297)
+component_scene = ExtResource("5_nanmf")

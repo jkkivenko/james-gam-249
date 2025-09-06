@@ -30,7 +30,7 @@ func get_all_components(obj : Node2D = self) -> Array[HammerComponent]:
 	return components
 
 func _process(_delta):
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and hovered_component:
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and hovered_component and not GameManager.is_holding_a_component:
 		disconnect_component(hovered_component)
 		for disconnected_component in get_disconnected_components():
 			print("THERE IS A DISCONNECTED COMPONENT!!!!!!!!!!!!!!!!!!!")
@@ -40,6 +40,7 @@ func disconnect_component(component : HammerComponent, should_create_held_object
 	# First we create the held entity that will float around the player's mouse
 	var entity : Node2D
 	if should_create_held_object:
+		GameManager.is_holding_a_component = true
 		entity = held_entity_scene.instantiate()
 	else:
 		entity = physics_entity_scene.instantiate()
@@ -101,13 +102,42 @@ func add_component(component : HammerComponent) -> bool:
 		closest_attachment_point_self.attached_point = closest_attachment_point_other
 		closest_attachment_point_other.attached_point = closest_attachment_point_self
 		#print("Other component's " + closest_attachment_point_other.name + " connected to this component's " + closest_attachment_point_self.name)
-		component.get_parent().remove_child(component)
-		add_child(component)
-		component.rotation = -closest_attachment_point_other.rotation + closest_attachment_point_self.rotation + PI + closest_attachment_point_self.get_parent().rotation
+		var old_parent = component.get_parent()
+		old_parent.remove_child(component)
+		var component_rotation = global_rotation - closest_attachment_point_other.rotation + closest_attachment_point_self.rotation + PI + closest_attachment_point_self.get_parent().rotation
 		#print("Calculated a rotation of ", -(closest_attachment_point_self.rotation + closest_attachment_point_other.rotation))
-		var position_offset = (-closest_attachment_point_other.position).rotated(component.global_rotation)
+		var position_offset = (-closest_attachment_point_other.position).rotated(component_rotation)
 		#print("Offset by ", position_offset)
-		component.global_position = closest_attachment_point_self.global_position + position_offset
+		var component_position = closest_attachment_point_self.global_position + position_offset
+		# Create a new area2d to test if anything is currently taking up the space that the new component will take up
+		var collision_test_area : Area2D = Area2D.new()
+		add_child(collision_test_area)
+		collision_test_area.add_child(component)
+		component.global_rotation = component_rotation
+		component.global_position = component_position
+		component.scale = Vector2.ONE * 0.9
+		await get_tree().process_frame
+		await get_tree().process_frame
+		var is_colliding = bool(len(collision_test_area.get_overlapping_bodies()))
+		#print(is_colliding)
+		collision_test_area.remove_child(component)
+		collision_test_area.queue_free()
+		if is_colliding:
+			old_parent.add_child(component)
+			component.rotation = 0
+			component.position = Vector2.ZERO
+			return false
+		# Finally, add the component to the hammer
+		# Have to recalculate these because the hammer might have moved during the await step
+		# This does technically mean that the player could subvert the collision detection if they're swinging the hammer REALLY HARD
+		# But like, whatever
+		component_rotation = global_rotation - closest_attachment_point_other.rotation + closest_attachment_point_self.rotation + PI + closest_attachment_point_self.get_parent().rotation
+		position_offset = (-closest_attachment_point_other.position).rotated(component_rotation)
+		component_position = closest_attachment_point_self.global_position + position_offset
+		add_child(component)
+		component.global_rotation = component_rotation
+		component.global_position = component_position
+		component.scale = Vector2.ONE
 		return true
 	return false
 
