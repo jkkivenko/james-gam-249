@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://hufwf0pqnxy8"]
+
+[node name="Button" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Level 1: It is a level"

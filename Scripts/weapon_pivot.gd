@@ -186,7 +186,7 @@ func get_manual_angular_vel() -> float:
 	
 	return angular_vel_steps_sum / len(angular_vel_steps)
 
-func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+func _on_body_shape_entered(_body_rid, body, body_shape_index, local_shape_index):
 	# tilemap bad
 	if not "shape_find_owner" in body:
 		return
@@ -209,4 +209,6 @@ func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index)
 	print(abs(get_manual_angular_vel() * radial_distance * mass))
 	
 	if impulse_delivered > hit.required_impulse_to_kill or block_that_performed_hit.is_spiky:
+		if not block_that_performed_hit.is_spiky and hit.armored:
+			return
 		hit.kill()

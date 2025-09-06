@@ -17,6 +17,7 @@ var animation_state: int = 0
 @export var movement_type: MovementTypes = MovementTypes.CONTINUOUS
 
 @export var required_impulse_to_kill: float = 22.0
+@export var armored: bool = false
 @export var component_scene : PackedScene
 var dead: bool = false
 
