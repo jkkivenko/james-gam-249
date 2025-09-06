@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ekx6m0e8ufcf"]
+[gd_scene load_steps=13 format=3 uid="uid://ekx6m0e8ufcf"]
 
 [ext_resource type="Texture2D" uid="uid://vsh53w0kddj4" path="res://icon.svg" id="1_llrt7"]
 [ext_resource type="PackedScene" uid="uid://dl8yi5v1vwkq3" path="res://Scenes/player.tscn" id="2_f8181"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cu5yompuo8gcb" path="res://Scripts/enemy.gd" id="6_lukku"]
 [ext_resource type="Texture2D" uid="uid://di8a0j646lffh" path="res://art/enemy_1.png" id="7_pds1a"]
 [ext_resource type="PackedScene" uid="uid://bxdeq1ivh4mi3" path="res://Scenes/gügly_eyes.tscn" id="8_00r1a"]
+[ext_resource type="PackedScene" uid="uid://dqnnoeh0dq28u" path="res://Scenes/spring.tscn" id="9_pds1a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2o6t"]
 size = Vector2(4010, 191)
@@ -50,7 +51,7 @@ position = Vector2(871, 267)
 component_scene = ExtResource("5_lpgml")
 
 [node name="PhysicsEntity" parent="." instance=ExtResource("4_fe7jn")]
-position = Vector2(306, 297)
+position = Vector2(76, 271)
 component_scene = ExtResource("5_nanmf")
 
 [node name="Enemy" type="RigidBody2D" parent="."]
@@ -77,3 +78,7 @@ scale = Vector2(0.917, 0.917)
 [node name="GüglyEyes2" parent="Enemy/Sprite2D" instance=ExtResource("8_00r1a")]
 position = Vector2(-60.59, -76.705)
 scale = Vector2(0.857, 0.857)
+
+[node name="PhysicsEntity3" parent="." instance=ExtResource("4_fe7jn")]
+position = Vector2(331, 446)
+component_scene = ExtResource("9_pds1a")

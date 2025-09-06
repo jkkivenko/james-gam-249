@@ -15,7 +15,7 @@ max_rotation_speed = 0.8
 attachment_distance_threshold = 100.0
 
 [node name="Hilt" parent="." instance=ExtResource("2_1c5ut")]
-position = Vector2(0, -100)
+position = Vector2(0, -125)
 
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -158,13 +158,16 @@ func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index)
 	# tilemap bad
 	if not "shape_find_owner" in body:
 		return
-	
 	var hit = body.shape_owner_get_owner(body.shape_find_owner(body_shape_index)).get_parent()
+	var block_that_performed_hit : HammerComponent = shape_owner_get_owner(shape_find_owner(local_shape_index))
+	# If you hit with a spring, apply some forces
+	if block_that_performed_hit.is_springy:
+		print("ASDASDASDASDASDASDASDASD")
+		apply_impulse((-Vector2.UP).rotated(block_that_performed_hit.rotation) * 500, block_that_performed_hit.global_position - global_position)
 	# ensure you have hit an enemy
 	if not "required_impulse_to_kill" in hit:
 		return
 	
-	var block_that_performed_hit = shape_owner_get_owner(shape_find_owner(local_shape_index))
 	var radial_distance = block_that_performed_hit.position.y
 	
 	var impulse_delivered = abs(angular_velocity * radial_distance * mass)
