@@ -13,6 +13,7 @@ size = Vector2(100, 100)
 mass = 0.1
 physics_material_override = SubResource("PhysicsMaterial_itlcx")
 script = ExtResource("1_010gp")
+max_rotation_speed = 1.5
 
 [node name="Hilt" type="CollisionShape2D" parent="."]
 position = Vector2(120, 0)

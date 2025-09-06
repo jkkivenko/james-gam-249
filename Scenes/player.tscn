@@ -13,7 +13,7 @@ size = Vector2(100, 100)
 physics_material_override = SubResource("PhysicsMaterial_e2o6t")
 lock_rotation = true
 script = ExtResource("1_cvnsp")
-movement_force_magnitude = 600.0
+movement_force_magnitude = 3000.0
 max_movement_speed = 500.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -28,4 +28,3 @@ node_a = NodePath("..")
 node_b = NodePath("../Hammer")
 
 [node name="Hammer" parent="." instance=ExtResource("3_6t5aa")]
-shwing_force = 500000.0
