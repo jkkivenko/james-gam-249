@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://nqxkygju2j46"]
+
+[ext_resource type="Script" uid="uid://cu5yompuo8gcb" path="res://Scripts/enemy.gd" id="1_287tu"]
+[ext_resource type="PackedScene" uid="uid://dafcgwkvmg08y" path="res://Scenes/block.tscn" id="2_0830c"]
+[ext_resource type="Texture2D" uid="uid://di8a0j646lffh" path="res://art/enemy_1.png" id="3_ghaa6"]
+[ext_resource type="PackedScene" uid="uid://bxdeq1ivh4mi3" path="res://Scenes/gügly_eyes.tscn" id="4_1dp5w"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e2o6t"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h4fw4"]
+radius = 49.0
+height = 98.0
+
+[node name="Enemy" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 7
+physics_material_override = SubResource("PhysicsMaterial_e2o6t")
+lock_rotation = true
+script = ExtResource("1_287tu")
+movement_force_magnitude = 1500.0
+required_impulse_to_kill = 5000.0
+component_scene = ExtResource("2_0830c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_h4fw4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.237, 0.237)
+texture = ExtResource("3_ghaa6")
+
+[node name="GüglyEyes" parent="Sprite2D" instance=ExtResource("4_1dp5w")]
+position = Vector2(63.38, -81.18)
+scale = Vector2(0.917, 0.917)
+
+[node name="GüglyEyes2" parent="Sprite2D" instance=ExtResource("4_1dp5w")]
+position = Vector2(-60.59, -76.705)
+scale = Vector2(0.857, 0.857)

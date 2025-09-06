@@ -16,9 +16,19 @@ var physics_entity_scene : PackedScene = load("res://Scenes/physics_entity.tscn"
 
 var hovered_component : HammerComponent
 
+var n_angles: int = 10
+var past_n_angles : Array[float]
+var past_n_dt: Array[float]
+
 func _ready():
 	for component in get_all_components():
 		mass += component.mass
+	
+	past_n_dt = []
+	past_n_angles = []
+	for i in range(n_angles):
+		past_n_angles.append(0)
+		past_n_dt.append(0.1)
 
 ## Recursively explores the node tree to find all nodes that are HammerComponents
 func get_all_components(obj : Node2D = self) -> Array[HammerComponent]:
@@ -78,13 +88,18 @@ func get_all_attached_components(root : HammerComponent = $Hilt, visited_compone
 			visited_components += get_all_attached_components(attachment_point.attached_point.get_parent(), visited_components)
 	return visited_components
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	if not Engine.is_editor_hint():
 		var current_rps = angular_velocity / (2 * PI)
 		if Input.is_action_pressed("Swing Clockwise") and current_rps < max_rotation_speed:
 			apply_torque(shwing_force)
 		elif Input.is_action_pressed("Swing Counterclockwise") and -current_rps < max_rotation_speed:
 			apply_torque(-shwing_force)
+	
+	past_n_angles.pop_front()
+	past_n_angles.append(global_rotation_degrees)
+	past_n_dt.pop_front()
+	past_n_dt.append(delta)
 
 func add_component(component : HammerComponent) -> bool:
 	var closest_attachment_point_self : AttachmentPoint
@@ -154,6 +169,23 @@ func _on_mouse_shape_entered(shape_idx):
 func _on_mouse_exited():
 	hovered_component = null
 
+func get_manual_angular_vel() -> float:
+	var angular_vel_steps: Array[float] = []
+	for i in range(n_angles - 1):
+		var d_angle = past_n_angles[i+1] - past_n_angles[i]
+		var d_t = past_n_dt[i+1]
+		
+		# Hangle -180 to 180 and other way
+		d_angle = min(abs(d_angle), abs((past_n_angles[i+1] + 180) - past_n_angles[i]), abs(past_n_angles[i+1] - (past_n_angles[i] + 180)))
+		
+		angular_vel_steps.append(d_angle/d_t)
+	
+	var angular_vel_steps_sum = 0
+	for i in angular_vel_steps:
+		angular_vel_steps_sum += i
+	
+	return angular_vel_steps_sum / len(angular_vel_steps)
+
 func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	# tilemap bad
 	if not "shape_find_owner" in body:
@@ -163,14 +195,15 @@ func _on_body_shape_entered(body_rid, body, body_shape_index, local_shape_index)
 	# If you hit with a spring, apply some forces
 	if block_that_performed_hit.is_springy:
 		print("ASDASDASDASDASDASDASDASD")
-		apply_impulse((-Vector2.UP).rotated(block_that_performed_hit.rotation) * 500, block_that_performed_hit.global_position - global_position)
+		apply_impulse((-Vector2.UP).rotated(block_that_performed_hit.global_rotation) * 500, block_that_performed_hit.global_position - global_position)
 	# ensure you have hit an enemy
 	if not "required_impulse_to_kill" in hit:
 		return
 	
 	var radial_distance = block_that_performed_hit.position.y
 	
-	var impulse_delivered = abs(angular_velocity * radial_distance * mass)
+	var impulse_delivered = abs(get_manual_angular_vel() * radial_distance * mass)
+	print(abs(get_manual_angular_vel() * radial_distance * mass))
 	
 	if impulse_delivered > hit.required_impulse_to_kill or block_that_performed_hit.is_spiky:
 		hit.kill()
