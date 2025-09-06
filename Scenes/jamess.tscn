@@ -1,18 +1,14 @@
 [gd_scene load_steps=7 format=3 uid="uid://cr0vks3weya76"]
 
 [ext_resource type="Texture2D" uid="uid://vsh53w0kddj4" path="res://icon.svg" id="1_llrt7"]
-[ext_resource type="Script" uid="uid://b8jlnpiwhkovb" path="res://Scripts/weapon_pivot.gd" id="2_f8181"]
+[ext_resource type="Script" uid="uid://dvy0hwhhqi1oy" path="res://player_controller.gd" id="2_f8181"]
+[ext_resource type="PackedScene" uid="uid://b81b7gfiot1ei" path="res://Scenes/hammer.tscn" id="2_llrt7"]
+[ext_resource type="PackedScene" uid="uid://dafcgwkvmg08y" path="res://Scenes/block.tscn" id="4_fe7jn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oy16b"]
 size = Vector2(1234, 191)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x8gtn"]
-size = Vector2(100, 100)
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_itlcx"]
-friction = 0.1
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mb55d"]
 size = Vector2(100, 100)
 
 [node name="Jamesscene" type="Node2D"]
@@ -29,7 +25,10 @@ texture = ExtResource("1_llrt7")
 
 [node name="Player" type="RigidBody2D" parent="."]
 position = Vector2(591, 450)
-rotation = -0.051317
+lock_rotation = true
+script = ExtResource("2_f8181")
+movement_force_magnitude = 3000.0
+bonus_friction_force_magnitude = 1000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("RectangleShape2D_x8gtn")
@@ -42,16 +41,10 @@ texture = ExtResource("1_llrt7")
 node_a = NodePath("..")
 node_b = NodePath("../Weapon")
 
-[node name="Weapon" type="RigidBody2D" parent="Player"]
-mass = 0.1
-physics_material_override = SubResource("PhysicsMaterial_itlcx")
-script = ExtResource("2_f8181")
-
-[node name="Hilt" type="Sprite2D" parent="Player/Weapon"]
-position = Vector2(120, 0)
-scale = Vector2(0.7813, 0.7813)
-texture = ExtResource("1_llrt7")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Weapon"]
-position = Vector2(120, 0)
-shape = SubResource("RectangleShape2D_mb55d")
+[node name="Weapon" parent="Player" instance=ExtResource("2_llrt7")]
+mass = 0.4
+components = Dictionary[Vector2i, PackedScene]({
+Vector2i(0, 0): ExtResource("4_fe7jn"),
+Vector2i(1, 0): ExtResource("4_fe7jn"),
+Vector2i(2, 0): ExtResource("4_fe7jn")
+})

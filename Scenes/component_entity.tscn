@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfdxiw70602xd"]
+
+[ext_resource type="Script" uid="uid://ci0sy3jjqsvv1" path="res://Scripts/component_entity.gd" id="1_ottmd"]
+
+[node name="BlockEntity" type="RigidBody2D"]
+script = ExtResource("1_ottmd")
