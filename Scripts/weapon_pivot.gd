@@ -112,7 +112,7 @@ func add_component(component : HammerComponent) -> bool:
 	return false
 
 func _on_mouse_shape_entered(shape_idx):
-	print(shape_owner_get_owner(shape_find_owner(shape_idx)).name, " entered!")
+	#print(shape_owner_get_owner(shape_find_owner(shape_idx)).name, " entered!")
 	hovered_component = shape_owner_get_owner(shape_find_owner(shape_idx))
 	if hovered_component == $Hilt:
 		hovered_component = null
