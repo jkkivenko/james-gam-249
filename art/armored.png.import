@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btdro14b3j2h5"
-path="res://.godot/imported/Dor.png-55fa7f87a75ab0b42b644e50593fb28b.ctex"
+uid="uid://duk0k6nfn6geq"
+path="res://.godot/imported/armored.png-fb65dd45f95cf9eb35b05ae3cb44ff87.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Dor.png"
-dest_files=["res://.godot/imported/Dor.png-55fa7f87a75ab0b42b644e50593fb28b.ctex"]
+source_file="res://art/armored.png"
+dest_files=["res://.godot/imported/armored.png-fb65dd45f95cf9eb35b05ae3cb44ff87.ctex"]
 
 [params]
 

@@ -1,11 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://bbwrl1iifmyqs"]
 
 [ext_resource type="Script" uid="uid://cu5yompuo8gcb" path="res://Scripts/enemy.gd" id="1_o66j5"]
+[ext_resource type="PhysicsMaterial" uid="uid://ca5nx80c0omxo" path="res://Resources/enemy_phys_mat.tres" id="1_wcwd7"]
 [ext_resource type="PackedScene" uid="uid://dafcgwkvmg08y" path="res://Scenes/block.tscn" id="2_wcwd7"]
-[ext_resource type="Texture2D" uid="uid://on6hws5v55qc" path="res://art/enemy_with_armor.png" id="3_o66j5"]
 [ext_resource type="PackedScene" uid="uid://bxdeq1ivh4mi3" path="res://Scenes/gügly_eyes.tscn" id="4_q1njd"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e2o6t"]
+[ext_resource type="Texture2D" uid="uid://duk0k6nfn6geq" path="res://art/armored.png" id="4_wcwd7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o66j5"]
 size = Vector2(100, 100)
@@ -14,7 +13,7 @@ size = Vector2(100, 100)
 collision_layer = 4
 collision_mask = 39
 mass = 0.5
-physics_material_override = SubResource("PhysicsMaterial_e2o6t")
+physics_material_override = ExtResource("1_wcwd7")
 lock_rotation = true
 script = ExtResource("1_o66j5")
 movement_force_magnitude = 750.0
@@ -26,10 +25,11 @@ component_scene = ExtResource("2_wcwd7")
 shape = SubResource("RectangleShape2D_o66j5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_o66j5")
+scale = Vector2(5, 5)
+texture = ExtResource("4_wcwd7")
 
 [node name="GüglyEyes" parent="Sprite2D" instance=ExtResource("4_q1njd")]
-position = Vector2(18, -19)
+position = Vector2(4.5, -0.5)
 
 [node name="GüglyEyes2" parent="Sprite2D" instance=ExtResource("4_q1njd")]
-position = Vector2(-16, -20)
+position = Vector2(-4.5, -0.5)

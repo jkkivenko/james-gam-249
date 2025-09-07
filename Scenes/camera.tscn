@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://1i5apjkfmswe"]
+[gd_scene load_steps=3 format=3 uid="uid://1i5apjkfmswe"]
 
 [ext_resource type="Script" uid="uid://xkbehqwr3btf" path="res://Scripts/camera_controller.gd" id="1_375tr"]
+[ext_resource type="PackedScene" uid="uid://d2av55n5fwnhv" path="res://Scenes/background.tscn" id="2_f1cf7"]
 
 [node name="Camera2D" type="Camera2D"]
 script = ExtResource("1_375tr")
@@ -8,3 +9,5 @@ script = ExtResource("1_375tr")
 [node name="BottomLeft" type="Node2D" parent="."]
 
 [node name="TopRight" type="Node2D" parent="."]
+
+[node name="Background" parent="." instance=ExtResource("2_f1cf7")]

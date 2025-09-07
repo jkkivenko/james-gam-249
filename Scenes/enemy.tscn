@@ -1,11 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://nqxkygju2j46"]
 
 [ext_resource type="Script" uid="uid://cu5yompuo8gcb" path="res://Scripts/enemy.gd" id="1_287tu"]
+[ext_resource type="PhysicsMaterial" uid="uid://ca5nx80c0omxo" path="res://Resources/enemy_phys_mat.tres" id="1_0830c"]
 [ext_resource type="PackedScene" uid="uid://dafcgwkvmg08y" path="res://Scenes/block.tscn" id="2_0830c"]
 [ext_resource type="Texture2D" uid="uid://b2y1iaa2xfe6h" path="res://art/brickguy.png" id="3_287tu"]
 [ext_resource type="PackedScene" uid="uid://bxdeq1ivh4mi3" path="res://Scenes/gügly_eyes.tscn" id="4_1dp5w"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e2o6t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_287tu"]
 size = Vector2(100, 100)
@@ -14,7 +13,7 @@ size = Vector2(100, 100)
 collision_layer = 4
 collision_mask = 39
 mass = 0.5
-physics_material_override = SubResource("PhysicsMaterial_e2o6t")
+physics_material_override = ExtResource("1_0830c")
 lock_rotation = true
 script = ExtResource("1_287tu")
 movement_force_magnitude = 1500.0
