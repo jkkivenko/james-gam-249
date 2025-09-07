@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dl8yi5v1vwkq3"]
+[gd_scene load_steps=8 format=3 uid="uid://dl8yi5v1vwkq3"]
 
-[ext_resource type="Script" uid="uid://dvy0hwhhqi1oy" path="res://Scripts/player_controller.gd" id="1_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://d1hiuc0dcaa7n" path="res://art/protag.png" id="2_6t5aa"]
+[ext_resource type="Script" path="res://Scripts/player_controller.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://cr28mw07fpno2" path="res://art/playerguy.png" id="2_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://b81b7gfiot1ei" path="res://Scenes/weapon_pivot.tscn" id="3_6t5aa"]
+[ext_resource type="PackedScene" uid="uid://bxdeq1ivh4mi3" path="res://Scenes/gügly_eyes.tscn" id="3_fkybt"]
+[ext_resource type="Texture2D" uid="uid://v6g74f08uhlx" path="res://art/playerhat.png" id="3_vgqql"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e2o6t"]
 friction = 0.7
@@ -35,8 +37,20 @@ target_position = Vector2(0, 9)
 collision_mask = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.237, 0.237)
+scale = Vector2(5, 5)
 texture = ExtResource("2_6t5aa")
+
+[node name="GüglyEyes" parent="Sprite2D" instance=ExtResource("3_fkybt")]
+position = Vector2(-5.5, -4.5)
+scale = Vector2(0.2, 0.2)
+
+[node name="GüglyEyes2" parent="Sprite2D" instance=ExtResource("3_fkybt")]
+position = Vector2(5.5, -4.5)
+scale = Vector2(0.2, 0.2)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("3_vgqql")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
 node_a = NodePath("..")
