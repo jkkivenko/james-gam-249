@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://dl8yi5v1vwkq3" path="res://Scenes/player.tscn" id="2_u1b78"]
 [ext_resource type="PackedScene" uid="uid://buas4iqytj32k" path="res://Scenes/button_press.tscn" id="7_nolpu"]
 [ext_resource type="PackedScene" uid="uid://bdc44ouqrma4l" path="res://Scenes/sliding_door.tscn" id="9_af2a1"]
-[ext_resource type="Script" uid="uid://bei8fc3xkq2n6" path="res://Scripts/tile_map_layer_baker.gd" id="9_hkfpk"]
+[ext_resource type="Script" path="res://Scripts/tile_map_layer_baker.gd" id="9_hkfpk"]
 [ext_resource type="PackedScene" uid="uid://cmsxhdvp6h10f" path="res://Scenes/wire.tscn" id="9_ir7pk"]
 [ext_resource type="TileSet" uid="uid://dumlhgw7hloka" path="res://Resources/grass_tile_set.tres" id="10_ocmlb"]
-[ext_resource type="PackedScene" uid="uid://1i5apjkfmswe" path="res://Scenes/camera.tscn" id="11_tlxhh"]
+[ext_resource type="PackedScene" path="res://Scenes/camera.tscn" id="11_tlxhh"]
 [ext_resource type="PackedScene" uid="uid://cttfjhq6eot7b" path="res://Scenes/exit.tscn" id="12_rxhxl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i36j2"]
