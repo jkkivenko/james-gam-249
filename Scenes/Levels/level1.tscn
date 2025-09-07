@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://caepxlmorghrs"]
+[gd_scene load_steps=9 format=4 uid="uid://caepxlmorghrs"]
 
 [ext_resource type="PackedScene" uid="uid://nqxkygju2j46" path="res://Scenes/enemy.tscn" id="2_i36j2"]
 [ext_resource type="PackedScene" uid="uid://dl8yi5v1vwkq3" path="res://Scenes/player.tscn" id="2_u1b78"]
 [ext_resource type="PackedScene" uid="uid://buas4iqytj32k" path="res://Scenes/button.tscn" id="7_nolpu"]
 [ext_resource type="Script" uid="uid://bjbbotk4r002l" path="res://Scripts/button.gd" id="8_mcj63"]
 [ext_resource type="PackedScene" uid="uid://bdc44ouqrma4l" path="res://Scenes/sliding_door.tscn" id="9_af2a1"]
-[ext_resource type="PackedScene" uid="uid://bbwrl1iifmyqs" path="res://Scenes/enemy_with_armor.tscn" id="9_hkfpk"]
 [ext_resource type="TileSet" uid="uid://dumlhgw7hloka" path="res://Resources/grass_tile_set.tres" id="10_ocmlb"]
 [ext_resource type="PackedScene" uid="uid://1i5apjkfmswe" path="res://Scenes/camera.tscn" id="11_tlxhh"]
 [ext_resource type="PackedScene" uid="uid://cttfjhq6eot7b" path="res://Scenes/exit.tscn" id="12_rxhxl"]
@@ -17,8 +16,7 @@ position = Vector2(348, 438)
 
 [node name="Enemy" parent="." instance=ExtResource("2_i36j2")]
 position = Vector2(736, 436)
-mass = 0.9
-movement_force_magnitude = 1350.0
+movement_force_magnitude = 750.0
 
 [node name="Button" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("7_nolpu")]
 position = Vector2(895, 186)
@@ -51,8 +49,5 @@ position = Vector2(534, -282)
 [node name="Exit" parent="." instance=ExtResource("12_rxhxl")]
 position = Vector2(42, 447)
 collision_mask = 2
-
-[node name="Enemy2" parent="." instance=ExtResource("9_hkfpk")]
-position = Vector2(541, 427)
 
 [editable path="Camera2D"]

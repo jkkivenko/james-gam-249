@@ -11,6 +11,7 @@ height = 90.0
 script = ExtResource("1_ljsmn")
 
 [node name="Dor" type="Sprite2D" parent="."]
+z_index = -5
 texture = ExtResource("1_35a55")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
