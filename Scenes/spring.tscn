@@ -26,6 +26,14 @@ texture = ExtResource("2_1w5vy")
 position = Vector2(0, 50)
 rotation = -3.14159
 
+[node name="Left" parent="." instance=ExtResource("3_42hq0")]
+position = Vector2(-50, 0)
+rotation = -1.57079
+
+[node name="Right" parent="." instance=ExtResource("3_42hq0")]
+position = Vector2(50, 0)
+rotation = 1.57079
+
 [node name="SpringDetectionArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 5

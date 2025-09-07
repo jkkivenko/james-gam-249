@@ -1,27 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgt2k213q2327"]
+[gd_scene load_steps=5 format=3 uid="uid://bgt2k213q2327"]
 
 [ext_resource type="Script" uid="uid://t3j8047r2pwx" path="res://Scripts/hammer_component.gd" id="1_2mnih"]
-[ext_resource type="Texture2D" uid="uid://vsh53w0kddj4" path="res://icon.svg" id="2_fhxds"]
+[ext_resource type="Texture2D" uid="uid://be4ljjprhsvhd" path="res://art/screwguy.png" id="3_2mnih"]
 [ext_resource type="PackedScene" uid="uid://b0x3aihndppp2" path="res://Scenes/attachment_point.tscn" id="3_khj5f"]
-[ext_resource type="Texture2D" uid="uid://dlq0tases6osy" path="res://art/trigle.png" id="4_fhxds"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_fhxds"]
-points = PackedVector2Array(0, -73, 50, -12, 50, 12, -50, 12, -50, -12)
+points = PackedVector2Array(0, -88, 50, -12, 50, 12, -50, 12, -50, -12)
 
 [node name="Spike" type="CollisionShape2D"]
 shape = SubResource("ConvexPolygonShape2D_fhxds")
 script = ExtResource("1_2mnih")
 is_spiky = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.784, 0.1953)
-texture = ExtResource("2_fhxds")
-
 [node name="Bottom" parent="." instance=ExtResource("3_khj5f")]
 position = Vector2(0, 12)
 rotation = -3.14159
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(0, -42)
-scale = Vector2(0.4775, 0.742)
-texture = ExtResource("4_fhxds")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -38)
+scale = Vector2(5, 5)
+texture = ExtResource("3_2mnih")
