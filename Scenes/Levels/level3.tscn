@@ -7,24 +7,21 @@
 [ext_resource type="PackedScene" uid="uid://nqxkygju2j46" path="res://Scenes/enemy.tscn" id="5_i6bqf"]
 [ext_resource type="PackedScene" uid="uid://cttfjhq6eot7b" path="res://Scenes/exit.tscn" id="6_n80jh"]
 [ext_resource type="PackedScene" uid="uid://cq5y2uxc5e5j6" path="res://Scenes/and_gate.tscn" id="6_x0tam"]
+[ext_resource type="PackedScene" uid="uid://cmsxhdvp6h10f" path="res://Scenes/wire.tscn" id="7_n80jh"]
 [ext_resource type="PackedScene" uid="uid://buas4iqytj32k" path="res://Scenes/button_press.tscn" id="7_vfl4p"]
 [ext_resource type="PackedScene" uid="uid://bdc44ouqrma4l" path="res://Scenes/sliding_door.tscn" id="8_vfl4p"]
 [ext_resource type="PackedScene" uid="uid://cndq2jr6ub726" path="res://Scenes/enemy_dispenser.tscn" id="9_i6bqf"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i6bqf"]
-size = Vector2(20, 60)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n80jh"]
-size = Vector2(100, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q21to"]
-size = Vector2(20, 100)
+size = Vector2(60, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nqbrd"]
-size = Vector2(20, 40)
+size = Vector2(20, 120)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l8qla"]
-size = Vector2(260, 20)
+size = Vector2(220, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_du1gc"]
 size = Vector2(20, 60)
@@ -32,13 +29,13 @@ size = Vector2(20, 60)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uwisk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqib7"]
-size = Vector2(40, 20)
+size = Vector2(40, 18.4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w3eof"]
-size = Vector2(40, 20)
+size = Vector2(40, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pyjyt"]
-size = Vector2(40, 20)
+size = Vector2(40, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qm4xx"]
 
@@ -67,57 +64,53 @@ script = ExtResource("3_vfl4p")
 tilemaplayers_nodepaths = Array[NodePath]([NodePath("../TileMapLayer")])
 
 [node name="CollisionShape2D12" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
-position = Vector2(-170, 90)
-shape = SubResource("RectangleShape2D_i6bqf")
-
-[node name="CollisionShape2D13" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
-position = Vector2(-130, 50)
+position = Vector2(-130, 110)
 shape = SubResource("RectangleShape2D_n80jh")
 
-[node name="CollisionShape2D14" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
-position = Vector2(-90, -10)
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+position = Vector2(-110, 80)
 shape = SubResource("RectangleShape2D_q21to")
 
-[node name="CollisionShape2D15" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
-position = Vector2(-90, 80)
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+position = Vector2(-90, 0)
 shape = SubResource("RectangleShape2D_nqbrd")
 
-[node name="CollisionShape2D16" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
-position = Vector2(-50, 130)
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+position = Vector2(-30, 130)
 shape = SubResource("RectangleShape2D_l8qla")
 
-[node name="CollisionShape2D17" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
 position = Vector2(70, -30)
 shape = SubResource("RectangleShape2D_du1gc")
 
-[node name="CollisionShape2D18" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+[node name="CollisionShape2D17" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
 position = Vector2(70, 110)
 shape = SubResource("RectangleShape2D_uwisk")
 
-[node name="CollisionShape2D19" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
-position = Vector2(80, 10)
+[node name="CollisionShape2D18" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+position = Vector2(80, 9.2)
 shape = SubResource("RectangleShape2D_yqib7")
 
-[node name="CollisionShape2D20" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+[node name="CollisionShape2D19" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
 position = Vector2(80, 50)
 shape = SubResource("RectangleShape2D_w3eof")
 
-[node name="CollisionShape2D21" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
-position = Vector2(80, 90)
+[node name="CollisionShape2D20" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+position = Vector2(80, 90.5)
 shape = SubResource("RectangleShape2D_pyjyt")
 
-[node name="CollisionShape2D22" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+[node name="CollisionShape2D21" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
 position = Vector2(90, 30)
 shape = SubResource("RectangleShape2D_qm4xx")
 
-[node name="CollisionShape2D23" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+[node name="CollisionShape2D22" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
 position = Vector2(90, 70)
 shape = SubResource("RectangleShape2D_kp1sm")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Tilemaps"]
 rotation = -0.00202656
 scale = Vector2(5, 5)
-tile_map_data = PackedByteArray("AAD8/wYAAgABAAIAAAD9/wYAAgABAAIAAAD+/wYAAgABAAIAAAD//wYAAgABAAIAAAAAAAYAAgABAAIAAAABAAYAAgABAAIAAAACAAYAAgABAAIAAAADAAYAAgABAAIAAAADAAUAAgABAAIAAAAEAAQAAgABAAIAAAAEAAMAAgABAAIAAAAEAAIAAgABAAIAAAAEAAEAAgABAAIAAAADAAQAAgABAAIAAAADAAIAAgABAAIAAAADAAAAAgABAAIAAAAEAAAAAgABAAIAAAD7/wYAAgABAAIAAAD7/wQAAgABAAIAAAD7/wMAAgABAAIAAAD7/wIAAgABAAIAAAD7/wEAAgABAAIAAAD7/wAAAgABAAIAAAD6/wYAAgABAAIAAAD5/wYAAgABAAIAAAD4/wYAAgABAAIAAAD3/wYAAgABAAIAAAD3/wUAAgABAAIAAAD3/wQAAgABAAIAAAD3/wMAAgABAAIAAAD3/wIAAgABAAIAAAD4/wIAAgABAAIAAAD5/wIAAgABAAIAAAD6/wIAAgABAAIAAAADAP//AgABAAIAAAD7////AgABAAIAAAD7//7/AgABAAIAAAADAP7/AgABAAIAAAADAP3/AgABAAIAAAD7//3/AgABAAIAAAA=")
+tile_map_data = PackedByteArray("AAD8/wYAAgABAAAAAAD9/wYAAgABAAAAAAD+/wYAAgABAAAAAAD//wYAAgABAAAAAAAAAAYAAgABAAAAAAABAAYAAgABAAAAAAACAAYAAgABAAAAAAADAAYAAgACAAAAAAADAAUAAgAAAAEAACAEAAQAAgAAAAEAACAEAAMAAgAAAAIAAAAEAAIAAgAAAAIAAAAEAAEAAgAAAAIAAAADAAQAAgAAAAEAAAADAAIAAgAFAAEAAAADAAAAAgAAAAEAACAEAAAAAgAAAAEAAAD7/wYAAgABAAAAAAD7/wQAAgAAAAEAACD7/wMAAgAAAAIAAAD7/wIAAgAAAAIAAAD7/wEAAgAAAAIAAAD7/wAAAgAAAAIAAAADAP//AgAAAAIAAAD7////AgAAAAIAAAD7//7/AgAAAAIAAAADAP7/AgAAAAIAAAADAP3/AgAAAAEAAAD7//3/AgAAAAEAAAD6/wMAAgABAAEAAFD6/wQAAgABAAEAAHD5/wMAAgABAAEAAAD5/wQAAgABAAEAAGD5/wUAAgAFAAEAAAD5/wYAAgAAAAAAAAD6/wYAAgABAAAAAAA=")
 tile_set = ExtResource("4_wlbe4")
 collision_enabled = false
 navigation_enabled = false
@@ -151,21 +144,31 @@ collision_enabled = false
 navigation_enabled = false
 
 [node name="Exit" parent="." instance=ExtResource("6_n80jh")]
-position = Vector2(-748, 466)
+position = Vector2(-549, 551)
 
 [node name="AndGate" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("6_x0tam")]
-position = Vector2(707, 457)
-connects_to = [NodePath("../SlidingDoor")]
+position = Vector2(450, 250)
+rotation = 3.14159
+connects_to = [NodePath("../SlidingDoor"), NodePath("../Wire3")]
+
+[node name="Wire3" parent="." instance=ExtResource("7_n80jh")]
+tile_map_data = PackedByteArray("AAADAAIAAgAEAAAAAAACAAIAAgAEAAAAAAABAAIAAgAEAAAAAAAAAAIAAgAEAAAAAAD//wIAAgAEAAAAAAD+/wIAAgAEAAAAAAD9/wIAAgAEAAAAAAD8/wIAAgAEAAAAAAD7/wIAAgAFAAAAADD7/wMAAgAEAAAAAGD7/wQAAgADAAAAAGA=")
 
 [node name="Button" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("7_vfl4p")]
 position = Vector2(396, 147)
 rotation = -1.56387
-connects_to = [NodePath("../AndGate")]
+connects_to = [NodePath("../AndGate"), NodePath("../Wire")]
+
+[node name="Wire" parent="." instance=ExtResource("7_n80jh")]
+tile_map_data = PackedByteArray("AAAEAAEAAgAFAAAAAGA=")
 
 [node name="Button2" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("7_vfl4p")]
 position = Vector2(395, 347)
 rotation = -1.5646
-connects_to = [NodePath("../AndGate")]
+connects_to = [NodePath("../AndGate"), NodePath("../Wire2")]
+
+[node name="Wire2" parent="." instance=ExtResource("7_n80jh")]
+tile_map_data = PackedByteArray("AAAEAAMAAgAFAAAAAAA=")
 
 [node name="SlidingDoor" parent="." instance=ExtResource("8_vfl4p")]
 position = Vector2(-445, 549)

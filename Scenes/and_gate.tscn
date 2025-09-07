@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://cq5y2uxc5e5j6"]
+[gd_scene load_steps=3 format=3 uid="uid://cq5y2uxc5e5j6"]
 
+[ext_resource type="Texture2D" uid="uid://bmgw1lbmnnhc4" path="res://art/and.png" id="1_7w3wn"]
 [ext_resource type="Script" uid="uid://k6ln6c3emst5" path="res://Scripts/and_gate.gd" id="1_snexm"]
 
-[node name="AndGate" type="Node2D"]
+[node name="AndGate" type="Sprite2D"]
+scale = Vector2(5, 5)
+texture = ExtResource("1_7w3wn")
 script = ExtResource("1_snexm")

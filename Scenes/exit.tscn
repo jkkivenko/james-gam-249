@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d4not4pw58qii" path="res://art/nail_temp.png" id="2_ljsmn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_650lm"]
-size = Vector2(5, 81)
+size = Vector2(3, 81)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ljsmn"]
 size = Vector2(92, 76)
@@ -19,7 +19,7 @@ z_index = -5
 texture = ExtResource("2_ljsmn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(44.5, -1.5)
+position = Vector2(43.5, -1.5)
 shape = SubResource("RectangleShape2D_650lm")
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
