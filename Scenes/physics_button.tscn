@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://orwbkvpj4f62"]
+
+[ext_resource type="Script" uid="uid://bjbbotk4r002l" path="res://Scripts/button.gd" id="1_lepnf"]
+[ext_resource type="Texture2D" uid="uid://dtxvi4u5h860g" path="res://art/redtogglebutton.png" id="2_lepnf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dryh"]
+size = Vector2(80, 61)
+
+[node name="Physics Button" type="Area2D"]
+collision_mask = 38
+script = ExtResource("1_lepnf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -30.5)
+shape = SubResource("RectangleShape2D_3dryh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(4.76837e-07, -50)
+scale = Vector2(5, 5)
+texture = ExtResource("2_lepnf")

@@ -1,20 +1,21 @@
 [gd_scene load_steps=4 format=3 uid="uid://buas4iqytj32k"]
 
 [ext_resource type="Script" uid="uid://bjbbotk4r002l" path="res://Scripts/button.gd" id="1_0kpiu"]
-[ext_resource type="Texture2D" uid="uid://vsh53w0kddj4" path="res://icon.svg" id="1_1cmwl"]
+[ext_resource type="Texture2D" uid="uid://ieiduodli4rd" path="res://art/bluetogglebutton.png" id="2_0kpiu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dryh"]
-size = Vector2(100, 12)
+size = Vector2(80, 60)
 
-[node name="Press Button" type="Area2D"]
+[node name="Button" type="Area2D"]
 collision_mask = 34
 script = ExtResource("1_0kpiu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -30)
 shape = SubResource("RectangleShape2D_3dryh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 5
-position = Vector2(4.76837e-07, -7.62939e-06)
-scale = Vector2(0.78125, 0.0937501)
-texture = ExtResource("1_1cmwl")
+position = Vector2(4.76837e-07, -50)
+scale = Vector2(5, 5)
+texture = ExtResource("2_0kpiu")
