@@ -12,7 +12,7 @@ size = Vector2(92, 76)
 [node name="Exit" type="Area2D"]
 collision_mask = 32
 script = ExtResource("1_ljsmn")
-knockback_force = 600.0
+knockback_force = 1200.0
 
 [node name="Dor" type="Sprite2D" parent="."]
 z_index = -5

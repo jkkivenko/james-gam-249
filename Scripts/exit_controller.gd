@@ -1,6 +1,7 @@
 extends Area2D
 
-@export var knockback_force: float = 200.0
+@export var knockback_force: float = 1000.0
+## Min time between hits in seconds
 @export var hit_cooldown: float = 0.2
 @export var hits_required: int = 3
 ## How far the nail sticks out from the wall once fully driven
@@ -34,4 +35,4 @@ func _on_body_entered(body: Node2D) -> void:
 		
 		var hit = body.get_parent()
 		if hit is RigidBody2D:
-			hit.apply_impulse(Vector2.RIGHT.rotated(global_rotation) * knockback_force * 2.0)
+			hit.apply_impulse(Vector2.RIGHT.rotated(global_rotation) * knockback_force)

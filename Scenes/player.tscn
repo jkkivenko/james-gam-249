@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dl8yi5v1vwkq3"]
 
-[ext_resource type="Script" uid="uid://dvy0hwhhqi1oy" path="res://player_controller.gd" id="1_cvnsp"]
+[ext_resource type="Script" uid="uid://dvy0hwhhqi1oy" path="res://Scripts/player_controller.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://d1hiuc0dcaa7n" path="res://art/protag.png" id="2_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://b81b7gfiot1ei" path="res://Scenes/weapon_pivot.tscn" id="3_6t5aa"]
 
