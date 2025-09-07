@@ -7,13 +7,12 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e2o6t"]
 friction = 0.7
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6t5aa"]
-radius = 50.0
-height = 100.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6t5aa"]
+size = Vector2(100, 100)
 
 [node name="Player" type="RigidBody2D"]
 collision_layer = 2
-collision_mask = 13
+collision_mask = 45
 physics_material_override = SubResource("PhysicsMaterial_e2o6t")
 lock_rotation = true
 script = ExtResource("1_cvnsp")
@@ -21,7 +20,7 @@ movement_force_magnitude = 3000.0
 max_movement_speed = 500.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_6t5aa")
+shape = SubResource("RectangleShape2D_6t5aa")
 
 [node name="FloorCast" type="RayCast2D" parent="."]
 position = Vector2(0, 45)

@@ -1,18 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://cttfjhq6eot7b"]
+[gd_scene load_steps=5 format=3 uid="uid://cttfjhq6eot7b"]
 
-[ext_resource type="Texture2D" uid="uid://blkjw1bj60tgr" path="res://art/Dor.png" id="1_35a55"]
 [ext_resource type="Script" uid="uid://cmrqx12jvlexc" path="res://Scripts/exit_controller.gd" id="1_ljsmn"]
+[ext_resource type="Texture2D" uid="uid://d4not4pw58qii" path="res://art/nail_temp.png" id="2_ljsmn"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_35a55"]
-radius = 34.0
-height = 90.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_650lm"]
+size = Vector2(5, 81)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ljsmn"]
+size = Vector2(92, 76)
 
 [node name="Exit" type="Area2D"]
+collision_mask = 32
 script = ExtResource("1_ljsmn")
+knockback_force = 600.0
 
 [node name="Dor" type="Sprite2D" parent="."]
 z_index = -5
-texture = ExtResource("1_35a55")
+texture = ExtResource("2_ljsmn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_35a55")
+position = Vector2(44.5, -1.5)
+shape = SubResource("RectangleShape2D_650lm")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(-4, -2)
+shape = SubResource("RectangleShape2D_ljsmn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

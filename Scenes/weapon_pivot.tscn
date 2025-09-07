@@ -1,13 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://b81b7gfiot1ei"]
+[gd_scene load_steps=4 format=3 uid="uid://b81b7gfiot1ei"]
 
 [ext_resource type="Script" uid="uid://b8jlnpiwhkovb" path="res://Scripts/weapon_pivot.gd" id="1_7vne0"]
 [ext_resource type="PackedScene" uid="uid://bqj8wf1b8vux2" path="res://Scenes/hilt.tscn" id="2_1c5ut"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7vne0"]
+size = Vector2(95, 50)
+
 [node name="WeaponPivot" type="RigidBody2D" groups=["Weapon"]]
-collision_layer = 4
-collision_mask = 7
+collision_layer = 32
+collision_mask = 39
 input_pickable = true
 mass = 0.1
+continuous_cd = 2
 contact_monitor = true
 max_contacts_reported = 5
 script = ExtResource("1_7vne0")
@@ -16,6 +20,7 @@ attachment_distance_threshold = 100.0
 
 [node name="Hilt" parent="." instance=ExtResource("2_1c5ut")]
 position = Vector2(0, -125)
+shape = SubResource("RectangleShape2D_7vne0")
 
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
