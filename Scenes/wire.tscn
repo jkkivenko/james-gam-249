@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmsxhdvp6h10f"]
+
+[ext_resource type="TileSet" uid="uid://dumlhgw7hloka" path="res://Resources/grass_tile_set.tres" id="1_imld6"]
+[ext_resource type="Script" uid="uid://cdlmxq6tg2d8d" path="res://Scripts/wire.gd" id="2_amh6y"]
+
+[node name="Wire" type="TileMapLayer"]
+z_index = 10
+scale = Vector2(5, 5)
+tile_set = ExtResource("1_imld6")
+script = ExtResource("2_amh6y")

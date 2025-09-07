@@ -1,0 +1,181 @@
+[gd_scene load_steps=23 format=4 uid="uid://d0you5phoo6p3"]
+
+[ext_resource type="PackedScene" uid="uid://dl8yi5v1vwkq3" path="res://Scenes/player.tscn" id="1_ov3rk"]
+[ext_resource type="PackedScene" uid="uid://1i5apjkfmswe" path="res://Scenes/camera.tscn" id="2_x0tam"]
+[ext_resource type="Script" uid="uid://bei8fc3xkq2n6" path="res://Scripts/tile_map_layer_baker.gd" id="3_vfl4p"]
+[ext_resource type="TileSet" uid="uid://dumlhgw7hloka" path="res://Resources/grass_tile_set.tres" id="4_wlbe4"]
+[ext_resource type="PackedScene" uid="uid://nqxkygju2j46" path="res://Scenes/enemy.tscn" id="5_i6bqf"]
+[ext_resource type="PackedScene" uid="uid://cttfjhq6eot7b" path="res://Scenes/exit.tscn" id="6_n80jh"]
+[ext_resource type="PackedScene" uid="uid://cq5y2uxc5e5j6" path="res://Scenes/and_gate.tscn" id="6_x0tam"]
+[ext_resource type="PackedScene" uid="uid://buas4iqytj32k" path="res://Scenes/button_press.tscn" id="7_vfl4p"]
+[ext_resource type="PackedScene" uid="uid://bdc44ouqrma4l" path="res://Scenes/sliding_door.tscn" id="8_vfl4p"]
+[ext_resource type="PackedScene" uid="uid://cndq2jr6ub726" path="res://Scenes/enemy_dispenser.tscn" id="9_i6bqf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i6bqf"]
+size = Vector2(20, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n80jh"]
+size = Vector2(100, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q21to"]
+size = Vector2(20, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqbrd"]
+size = Vector2(20, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8qla"]
+size = Vector2(260, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_du1gc"]
+size = Vector2(20, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uwisk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqib7"]
+size = Vector2(40, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w3eof"]
+size = Vector2(40, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pyjyt"]
+size = Vector2(40, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qm4xx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kp1sm"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_ov3rk")]
+position = Vector2(244, 499)
+
+[node name="Camera2D" parent="." instance=ExtResource("2_x0tam")]
+position = Vector2(454, 323)
+zoom = Vector2(0.8, 0.8)
+
+[node name="BottomLeft" parent="Camera2D" index="0"]
+position = Vector2(-1386, 411)
+
+[node name="TopRight" parent="Camera2D" index="1"]
+position = Vector2(88, -350)
+
+[node name="Tilemaps" type="Node2D" parent="."]
+
+[node name="TileMapLayerCollider" type="StaticBody2D" parent="Tilemaps"]
+scale = Vector2(5, 5)
+script = ExtResource("3_vfl4p")
+tilemaplayers_nodepaths = Array[NodePath]([NodePath("../TileMapLayer")])
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+position = Vector2(-170, 90)
+shape = SubResource("RectangleShape2D_i6bqf")
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+position = Vector2(-130, 50)
+shape = SubResource("RectangleShape2D_n80jh")
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+position = Vector2(-90, -10)
+shape = SubResource("RectangleShape2D_q21to")
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+position = Vector2(-90, 80)
+shape = SubResource("RectangleShape2D_nqbrd")
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+position = Vector2(-50, 130)
+shape = SubResource("RectangleShape2D_l8qla")
+
+[node name="CollisionShape2D17" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+position = Vector2(70, -30)
+shape = SubResource("RectangleShape2D_du1gc")
+
+[node name="CollisionShape2D18" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+position = Vector2(70, 110)
+shape = SubResource("RectangleShape2D_uwisk")
+
+[node name="CollisionShape2D19" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+position = Vector2(80, 10)
+shape = SubResource("RectangleShape2D_yqib7")
+
+[node name="CollisionShape2D20" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+position = Vector2(80, 50)
+shape = SubResource("RectangleShape2D_w3eof")
+
+[node name="CollisionShape2D21" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+position = Vector2(80, 90)
+shape = SubResource("RectangleShape2D_pyjyt")
+
+[node name="CollisionShape2D22" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+position = Vector2(90, 30)
+shape = SubResource("RectangleShape2D_qm4xx")
+
+[node name="CollisionShape2D23" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+position = Vector2(90, 70)
+shape = SubResource("RectangleShape2D_kp1sm")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Tilemaps"]
+rotation = -0.00202656
+scale = Vector2(5, 5)
+tile_map_data = PackedByteArray("AAD8/wYAAgABAAIAAAD9/wYAAgABAAIAAAD+/wYAAgABAAIAAAD//wYAAgABAAIAAAAAAAYAAgABAAIAAAABAAYAAgABAAIAAAACAAYAAgABAAIAAAADAAYAAgABAAIAAAADAAUAAgABAAIAAAAEAAQAAgABAAIAAAAEAAMAAgABAAIAAAAEAAIAAgABAAIAAAAEAAEAAgABAAIAAAADAAQAAgABAAIAAAADAAIAAgABAAIAAAADAAAAAgABAAIAAAAEAAAAAgABAAIAAAD7/wYAAgABAAIAAAD7/wQAAgABAAIAAAD7/wMAAgABAAIAAAD7/wIAAgABAAIAAAD7/wEAAgABAAIAAAD7/wAAAgABAAIAAAD6/wYAAgABAAIAAAD5/wYAAgABAAIAAAD4/wYAAgABAAIAAAD3/wYAAgABAAIAAAD3/wUAAgABAAIAAAD3/wQAAgABAAIAAAD3/wMAAgABAAIAAAD3/wIAAgABAAIAAAD4/wIAAgABAAIAAAD5/wIAAgABAAIAAAD6/wIAAgABAAIAAAADAP//AgABAAIAAAD7////AgABAAIAAAD7//7/AgABAAIAAAADAP7/AgABAAIAAAADAP3/AgABAAIAAAD7//3/AgABAAIAAAA=")
+tile_set = ExtResource("4_wlbe4")
+collision_enabled = false
+navigation_enabled = false
+
+[node name="DraggableExclusionZone" type="StaticBody2D" parent="Tilemaps" groups=["Draggable Exclusion Collider"]]
+scale = Vector2(5, 5)
+collision_layer = 64
+input_pickable = true
+script = ExtResource("3_vfl4p")
+tilemaplayers_nodepaths = Array[NodePath]([NodePath("../DraggableExclusionTileMapLayer")])
+
+[node name="DraggableExclusionTileMapLayer" type="TileMapLayer" parent="Tilemaps"]
+rotation = -0.00202656
+scale = Vector2(5, 5)
+tile_set = ExtResource("4_wlbe4")
+collision_enabled = false
+navigation_enabled = false
+
+[node name="PlayerExclusionZone" type="StaticBody2D" parent="Tilemaps"]
+scale = Vector2(5, 5)
+collision_layer = 8
+input_pickable = true
+script = ExtResource("3_vfl4p")
+tilemaplayers_nodepaths = Array[NodePath]([NodePath("../DraggableExclusionTileMapLayer")])
+
+[node name="PlayerExclusionZoneTileMapLayer" type="TileMapLayer" parent="Tilemaps"]
+rotation = -0.00202656
+scale = Vector2(5, 5)
+tile_set = ExtResource("4_wlbe4")
+collision_enabled = false
+navigation_enabled = false
+
+[node name="Exit" parent="." instance=ExtResource("6_n80jh")]
+position = Vector2(-748, 466)
+
+[node name="AndGate" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("6_x0tam")]
+position = Vector2(707, 457)
+connects_to = [NodePath("../SlidingDoor")]
+
+[node name="Button" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("7_vfl4p")]
+position = Vector2(396, 147)
+rotation = -1.56387
+connects_to = [NodePath("../AndGate")]
+
+[node name="Button2" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("7_vfl4p")]
+position = Vector2(395, 347)
+rotation = -1.5646
+connects_to = [NodePath("../AndGate")]
+
+[node name="SlidingDoor" parent="." instance=ExtResource("8_vfl4p")]
+position = Vector2(-445, 549)
+rotation = -1.56421
+offset_from_closed = Vector2(0, -110)
+
+[node name="EnemyDispenser" parent="." instance=ExtResource("9_i6bqf")]
+position = Vector2(-313, 186)
+delay = 3.0
+enemy_to_summon = ExtResource("5_i6bqf")
+max_enemies_to_summon = 5
+
+[editable path="Camera2D"]

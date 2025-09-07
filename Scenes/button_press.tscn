@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dryh"]
 size = Vector2(100, 12)
 
-[node name="Button" type="Area2D"]
+[node name="Press Button" type="Area2D"]
 collision_mask = 34
 script = ExtResource("1_0kpiu")
 

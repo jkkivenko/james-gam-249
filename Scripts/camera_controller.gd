@@ -1,5 +1,7 @@
 extends Camera2D
 
+@export var follow_player: bool = true
+
 @onready var bottom_left_pos: Vector2 = $BottomLeft.global_position
 @onready var top_right_pos: Vector2 = $TopRight.global_position
 
@@ -10,4 +12,5 @@ func _ready() -> void:
 	limit_top = round(top_right_pos.y)
 
 func _process(_delta: float) -> void:
-	global_position = GameManager.player.global_position
+	if follow_player:
+		global_position = GameManager.player.global_position
