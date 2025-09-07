@@ -1,9 +1,8 @@
-[gd_scene load_steps=16 format=4 uid="uid://caepxlmorghrs"]
+[gd_scene load_steps=15 format=4 uid="uid://caepxlmorghrs"]
 
 [ext_resource type="PackedScene" uid="uid://nqxkygju2j46" path="res://Scenes/enemy.tscn" id="2_i36j2"]
 [ext_resource type="PackedScene" uid="uid://dl8yi5v1vwkq3" path="res://Scenes/player.tscn" id="2_u1b78"]
 [ext_resource type="PackedScene" uid="uid://buas4iqytj32k" path="res://Scenes/button.tscn" id="7_nolpu"]
-[ext_resource type="Script" uid="uid://bjbbotk4r002l" path="res://Scripts/button.gd" id="8_mcj63"]
 [ext_resource type="PackedScene" uid="uid://bdc44ouqrma4l" path="res://Scenes/sliding_door.tscn" id="9_af2a1"]
 [ext_resource type="Script" uid="uid://bei8fc3xkq2n6" path="res://Scripts/tile_map_layer_baker.gd" id="9_hkfpk"]
 [ext_resource type="TileSet" uid="uid://dumlhgw7hloka" path="res://Resources/grass_tile_set.tres" id="10_ocmlb"]
@@ -36,12 +35,6 @@ position = Vector2(348, 438)
 [node name="Enemy" parent="." instance=ExtResource("2_i36j2")]
 position = Vector2(736, 436)
 movement_force_magnitude = 750.0
-
-[node name="Button" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("7_nolpu")]
-position = Vector2(895, 186)
-rotation = 4.71927
-script = ExtResource("8_mcj63")
-connects_to = [NodePath("../SlidingDoor")]
 
 [node name="SlidingDoor" parent="." instance=ExtResource("9_af2a1")]
 position = Vector2(152, 450)
@@ -96,5 +89,9 @@ shape = SubResource("RectangleShape2D_8r8ce")
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="TileMapLayerCollider"]
 position = Vector2(736, 192)
 shape = SubResource("RectangleShape2D_nqasx")
+
+[node name="Button" parent="." instance=ExtResource("7_nolpu")]
+position = Vector2(895, 201)
+rotation = -1.5708
 
 [editable path="Camera2D"]

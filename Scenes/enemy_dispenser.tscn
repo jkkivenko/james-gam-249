@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cndq2jr6ub726"]
+
+[ext_resource type="Script" uid="uid://cck0blkugetcy" path="res://Scripts/enemy_dispenser.gd" id="1_jku3k"]
+[ext_resource type="Texture2D" uid="uid://blkjw1bj60tgr" path="res://art/Dor.png" id="1_oar7w"]
+
+[node name="EnemyDispenser" type="Node2D"]
+script = ExtResource("1_jku3k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.395, 1.06)
+texture = ExtResource("1_oar7w")

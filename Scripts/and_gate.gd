@@ -2,7 +2,7 @@ extends Powerable
 
 @export var connects_to: Array[Powerable]
 ## The number of buttons concurrently powering this and gate required for it to activate
-@export var required_power: int
+@export var required_power: int = 2
 
 var current_power: int = 0
 
