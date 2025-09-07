@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blkjw1bj60tgr"
-path="res://.godot/imported/Dor.png-55fa7f87a75ab0b42b644e50593fb28b.ctex"
+uid="uid://btdro14b3j2h5"
+path="res://.godot/imported/dor.png-35bbd71e1fd7603478a82852dd3d6ac0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Dor.png"
-dest_files=["res://.godot/imported/Dor.png-55fa7f87a75ab0b42b644e50593fb28b.ctex"]
+source_file="res://art/dor.png"
+dest_files=["res://.godot/imported/dor.png-35bbd71e1fd7603478a82852dd3d6ac0.ctex"]
 
 [params]
 
