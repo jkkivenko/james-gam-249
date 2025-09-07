@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3v7e8ix3cthb"]
+
+[ext_resource type="Script" uid="uid://e7dibp6s1fgt" path="res://Scripts/level_select.gd" id="1_f8bg2"]
+[ext_resource type="Texture2D" uid="uid://df0djf6yvjfrq" path="res://art/player_exclusion.png" id="1_vmift"]
+[ext_resource type="Theme" uid="uid://ca4xa5ireatft" path="res://art/theem.tres" id="2_f8bg2"]
+
+[node name="LevelSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f8bg2")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_vmift")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -15.5
+offset_right = 50.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_f8bg2")
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Select a Level"
+
+[node name="1" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "1. MBBMBMBB"
+
+[node name="2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "2. Climb"
+
+[node name="3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "3. Nathan Sux"
+
+[connection signal="pressed" from="VBoxContainer/1" to="." method="_on_1_pressed"]

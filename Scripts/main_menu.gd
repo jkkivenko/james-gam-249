@@ -1,10 +1,4 @@
-extends Node2D
+extends Control
 
-@export var levels = ["Level 1: Bing your bong", "Level 2: Vaulting"]
-@export var level_button: PackedScene
-
-func _ready() -> void:
-	for i in levels:
-		var button = level_button.instantiate()
-		button.text = i
-		$VBoxContainer.add_child(button)
+func _on_start_button_pressed():
+	get_tree().change_scene_to_packed(preload("res://Scenes/Menu/level_select.tscn"))
