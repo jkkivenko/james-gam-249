@@ -1,19 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqnnoeh0dq28u"]
+[gd_scene load_steps=7 format=3 uid="uid://dqnnoeh0dq28u"]
 
 [ext_resource type="Script" uid="uid://4b3ajjnoantp" path="res://Scripts/spring.gd" id="1_1w5vy"]
-[ext_resource type="Texture2D" uid="uid://y06c534dcy4m" path="res://art/shpring.png" id="2_1w5vy"]
+[ext_resource type="Texture2D" uid="uid://d0ardo5risriq" path="res://art/piston.png" id="2_1w5vy"]
+[ext_resource type="Texture2D" uid="uid://dcxwp087val0" path="res://art/extendedpiston.png" id="3_7tg8b"]
 [ext_resource type="PackedScene" uid="uid://b0x3aihndppp2" path="res://Scenes/attachment_point.tscn" id="3_42hq0"]
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_fhxds"]
-points = PackedVector2Array(50, 27, 50, 50, -50, 50, -50, 27)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7tg8b"]
+size = Vector2(100, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1w5vy"]
+size = Vector2(86, 15)
 
 [node name="Spring" type="CollisionShape2D"]
-shape = SubResource("ConvexPolygonShape2D_fhxds")
+shape = SubResource("RectangleShape2D_7tg8b")
 script = ExtResource("1_1w5vy")
+springiness = 700.0
+compressed_texture = ExtResource("2_1w5vy")
+extended_texture = ExtResource("3_7tg8b")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
 texture = ExtResource("2_1w5vy")
 
 [node name="Bottom" parent="." instance=ExtResource("3_42hq0")]
 position = Vector2(0, 50)
 rotation = -3.14159
+
+[node name="SpringDetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpringDetectionArea"]
+position = Vector2(0, -51.5)
+shape = SubResource("RectangleShape2D_1w5vy")
