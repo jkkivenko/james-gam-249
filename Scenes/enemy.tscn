@@ -30,8 +30,6 @@ texture = ExtResource("3_287tu")
 
 [node name="GüglyEyes" parent="Sprite2D" instance=ExtResource("4_1dp5w")]
 position = Vector2(4.5, -0.5)
-scale = Vector2(0.2, 0.2)
 
 [node name="GüglyEyes2" parent="Sprite2D" instance=ExtResource("4_1dp5w")]
 position = Vector2(-4.5, -0.5)
-scale = Vector2(0.2, 0.2)

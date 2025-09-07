@@ -7,11 +7,10 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e2o6t"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h4fw4"]
-radius = 49.0
-height = 98.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o66j5"]
+size = Vector2(100, 100)
 
-[node name="Enemy" type="RigidBody2D"]
+[node name="Armored Enemy" type="RigidBody2D"]
 collision_layer = 4
 collision_mask = 39
 mass = 0.5
@@ -23,7 +22,7 @@ required_impulse_to_kill = 5000.0
 component_scene = ExtResource("2_wcwd7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_h4fw4")
+shape = SubResource("RectangleShape2D_o66j5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_o66j5")

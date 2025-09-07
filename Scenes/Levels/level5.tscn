@@ -1,0 +1,145 @@
+[gd_scene load_steps=18 format=4 uid="uid://ceumrpqng1mm"]
+
+[ext_resource type="PackedScene" uid="uid://dl8yi5v1vwkq3" path="res://Scenes/player.tscn" id="1_pt0sv"]
+[ext_resource type="PackedScene" uid="uid://1i5apjkfmswe" path="res://Scenes/camera.tscn" id="2_t788b"]
+[ext_resource type="Script" uid="uid://bei8fc3xkq2n6" path="res://Scripts/tile_map_layer_baker.gd" id="3_f11tu"]
+[ext_resource type="TileSet" uid="uid://dumlhgw7hloka" path="res://Resources/grass_tile_set.tres" id="4_ykvih"]
+[ext_resource type="PackedScene" uid="uid://nqxkygju2j46" path="res://Scenes/enemy.tscn" id="5_rp22a"]
+[ext_resource type="PackedScene" uid="uid://cttfjhq6eot7b" path="res://Scenes/exit.tscn" id="6_cow3m"]
+[ext_resource type="PackedScene" uid="uid://orwbkvpj4f62" path="res://Scenes/physics_button.tscn" id="6_pt0sv"]
+[ext_resource type="PackedScene" uid="uid://cmsxhdvp6h10f" path="res://Scenes/wire.tscn" id="8_x3xif"]
+[ext_resource type="PackedScene" uid="uid://bdc44ouqrma4l" path="res://Scenes/sliding_door.tscn" id="9_1sss4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pt0sv"]
+size = Vector2(20, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t788b"]
+size = Vector2(20, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f11tu"]
+size = Vector2(100, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ykvih"]
+size = Vector2(40, 18.4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rp22a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cow3m"]
+size = Vector2(260, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_36ddn"]
+size = Vector2(80, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x3xif"]
+size = Vector2(20, 60)
+
+[node name="Game" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_pt0sv")]
+position = Vector2(56, 136)
+
+[node name="Camera2D" parent="." instance=ExtResource("2_t788b")]
+position = Vector2(454, 323)
+zoom = Vector2(0.8, 0.8)
+
+[node name="BottomLeft" parent="Camera2D" index="0"]
+position = Vector2(-883, 402)
+
+[node name="TopRight" parent="Camera2D" index="1"]
+position = Vector2(535, -339)
+
+[node name="Tilemaps" type="Node2D" parent="."]
+
+[node name="TileMapLayerCollider" type="StaticBody2D" parent="Tilemaps"]
+scale = Vector2(5, 5)
+script = ExtResource("3_f11tu")
+tilemaplayers_nodepaths = Array[NodePath]([NodePath("../TileMapLayer")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+position = Vector2(-70, 20)
+shape = SubResource("RectangleShape2D_pt0sv")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+position = Vector2(-70, 90)
+shape = SubResource("RectangleShape2D_t788b")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+position = Vector2(-30, 50)
+shape = SubResource("RectangleShape2D_f11tu")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+position = Vector2(0, 89.2)
+shape = SubResource("RectangleShape2D_ykvih")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+position = Vector2(10, 70)
+shape = SubResource("RectangleShape2D_rp22a")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+position = Vector2(50, 130)
+shape = SubResource("RectangleShape2D_cow3m")
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+position = Vector2(140, 110)
+shape = SubResource("RectangleShape2D_36ddn")
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+position = Vector2(170, 70)
+shape = SubResource("RectangleShape2D_x3xif")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Tilemaps"]
+rotation = -0.00202656
+scale = Vector2(5, 5)
+tile_map_data = PackedByteArray("AAABAAYAAgABAAAAAAACAAYAAgABAAAAAAADAAYAAgABAAAAAAAEAAYAAgACAAAAAAAFAAYAAgABAAEAAGAGAAYAAgACAAEAADAFAAUAAgABAAEAAAAHAAUAAgADAAEAAAAGAAUAAgACAAEAAAAHAAYAAgABAAEAADAAAAYAAgABAAAAAAD+/wYAAgABAAAAAAD//wYAAgABAAAAAAD8/wUAAgAAAAEAACD8/wQAAgAAAAIAAAD8/wMAAgAAAAIAAAD8/wYAAgAAAAAAAAD9/wYAAgABAAAAAAAIAAYAAgAAAAEAACAIAAIAAgAAAAEAAAAIAAUAAgAAAAIAAAAIAAQAAgAAAAIAAAAIAAMAAgAAAAIAAAAAAAQAAgAAAAEAACD8/wIAAgAAAAIAAAD8/wEAAgAAAAIAAAD8/wAAAgAAAAEAAAD9/wIAAgAAAAAAAAD+/wIAAgABAAAAAAD//wIAAgACAAAAAAAAAAIAAgAAAAEAAAAAAAMAAgAAAAIAAAD//wQAAgAFAAEAAAA=")
+tile_set = ExtResource("4_ykvih")
+collision_enabled = false
+navigation_enabled = false
+
+[node name="DraggableExclusionZone" type="StaticBody2D" parent="Tilemaps" groups=["Draggable Exclusion Collider"]]
+scale = Vector2(5, 5)
+collision_layer = 64
+input_pickable = true
+script = ExtResource("3_f11tu")
+tilemaplayers_nodepaths = Array[NodePath]([NodePath("../DraggableExclusionTileMapLayer")])
+
+[node name="DraggableExclusionTileMapLayer" type="TileMapLayer" parent="Tilemaps"]
+rotation = -0.00202656
+scale = Vector2(5, 5)
+tile_set = ExtResource("4_ykvih")
+collision_enabled = false
+navigation_enabled = false
+
+[node name="PlayerExclusionZone" type="StaticBody2D" parent="Tilemaps"]
+scale = Vector2(5, 5)
+collision_layer = 8
+input_pickable = true
+script = ExtResource("3_f11tu")
+tilemaplayers_nodepaths = Array[NodePath]([NodePath("../PlayerExclusionZoneTileMapLayer")])
+
+[node name="PlayerExclusionZoneTileMapLayer" type="TileMapLayer" parent="Tilemaps"]
+rotation = -0.00202656
+scale = Vector2(5, 5)
+tile_set = ExtResource("4_ykvih")
+collision_enabled = false
+navigation_enabled = false
+
+[node name="Exit" parent="." instance=ExtResource("6_cow3m")]
+position = Vector2(-273, 547)
+
+[node name="Physics Button" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("6_pt0sv")]
+position = Vector2(750, 499)
+button_type = 1
+connects_to = [NodePath("../SlidingDoor2"), NodePath("../Wire")]
+
+[node name="Wire" parent="." instance=ExtResource("8_x3xif")]
+tile_map_data = PackedByteArray("AAABAAYAAgAEAAAAAAACAAYAAgAEAAAAAAADAAYAAgAEAAAAAAAEAAYAAgAEAAAAAAAFAAYAAgAEAAAAAAAHAAYAAgAFAAAAAAAGAAYAAgAEAAAAAAAHAAUAAgAEAAAAAGAAAAYAAgADAAAAAAA=")
+
+[node name="SlidingDoor2" parent="." instance=ExtResource("9_1sss4")]
+position = Vector2(51, 550)
+rotation = -1.5708
+offset_from_closed = Vector2(0, -110)
+
+[node name="Enemy" parent="." instance=ExtResource("5_rp22a")]
+position = Vector2(-66, 350)
+
+[editable path="Camera2D"]

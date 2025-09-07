@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cttfjhq6eot7b" path="res://Scenes/exit.tscn" id="6_n80jh"]
 [ext_resource type="PackedScene" uid="uid://cq5y2uxc5e5j6" path="res://Scenes/and_gate.tscn" id="6_x0tam"]
 [ext_resource type="PackedScene" uid="uid://cmsxhdvp6h10f" path="res://Scenes/wire.tscn" id="7_n80jh"]
-[ext_resource type="PackedScene" uid="uid://buas4iqytj32k" path="res://Scenes/button_press.tscn" id="7_vfl4p"]
+[ext_resource type="PackedScene" uid="uid://buas4iqytj32k" path="res://Scenes/button.tscn" id="7_vfl4p"]
 [ext_resource type="PackedScene" uid="uid://bdc44ouqrma4l" path="res://Scenes/sliding_door.tscn" id="8_vfl4p"]
 [ext_resource type="PackedScene" uid="uid://cndq2jr6ub726" path="res://Scenes/enemy_dispenser.tscn" id="9_i6bqf"]
 
@@ -155,7 +155,7 @@ connects_to = [NodePath("../SlidingDoor"), NodePath("../Wire3")]
 tile_map_data = PackedByteArray("AAADAAIAAgAEAAAAAAACAAIAAgAEAAAAAAABAAIAAgAEAAAAAAAAAAIAAgAEAAAAAAD//wIAAgAEAAAAAAD+/wIAAgAEAAAAAAD9/wIAAgAEAAAAAAD8/wIAAgAEAAAAAAD7/wIAAgAFAAAAADD7/wMAAgAEAAAAAGD7/wQAAgADAAAAAGA=")
 
 [node name="Button" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("7_vfl4p")]
-position = Vector2(396, 147)
+position = Vector2(406, 149)
 rotation = -1.56387
 connects_to = [NodePath("../AndGate"), NodePath("../Wire")]
 
@@ -163,7 +163,7 @@ connects_to = [NodePath("../AndGate"), NodePath("../Wire")]
 tile_map_data = PackedByteArray("AAAEAAEAAgAFAAAAAGA=")
 
 [node name="Button2" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("7_vfl4p")]
-position = Vector2(395, 347)
+position = Vector2(405, 350)
 rotation = -1.5646
 connects_to = [NodePath("../AndGate"), NodePath("../Wire2")]
 
