@@ -13,8 +13,10 @@ func _process(delta):
 	#print(time_since_last_hit)
 	if time_since_last_hit > cooldown:
 		$Sprite2D.texture = compressed_texture
+		$Sprite2D.position = Vector2.ZERO
 	else:
 		$Sprite2D.texture = extended_texture
+		$Sprite2D.position = Vector2(0, -50)
 	for body in $SpringDetectionArea.get_overlapping_bodies():
 		if get_parent() is WeaponPivot and time_since_last_hit > cooldown:
 			time_since_last_hit = 0.0
