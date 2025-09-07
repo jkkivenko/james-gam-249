@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bqj8wf1b8vux2"]
 
 [ext_resource type="Script" uid="uid://t3j8047r2pwx" path="res://Scripts/hammer_component.gd" id="1_id6uf"]
-[ext_resource type="Texture2D" uid="uid://1op5n5ix8x1g" path="res://art/hilt_temp.png" id="2_id6uf"]
+[ext_resource type="Texture2D" uid="uid://fngd78g4p14d" path="res://art/hilt.png" id="2_id6uf"]
 [ext_resource type="PackedScene" uid="uid://b0x3aihndppp2" path="res://Scenes/attachment_point.tscn" id="2_y0su6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mb55d"]
@@ -13,6 +13,7 @@ script = ExtResource("1_id6uf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 25)
+scale = Vector2(5, 5)
 texture = ExtResource("2_id6uf")
 
 [node name="HiltAttachmentPoint" parent="." instance=ExtResource("2_y0su6")]

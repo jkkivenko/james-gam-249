@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dtxvi4u5h860g" path="res://art/redtogglebutton.png" id="2_lepnf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dryh"]
-size = Vector2(80, 61)
+size = Vector2(80, 60)
 
 [node name="Physics Button" type="Area2D"]
 collision_mask = 38

@@ -6,12 +6,6 @@ enum ButtonType { PRESS, HOLD }
 @export var button_type: ButtonType = ButtonType.PRESS:
 	set(new):
 		button_type = new
-		if button_type == ButtonType.PRESS:
-			texture = press_button_texture
-			pressed_texture = press_button_texture_pressed
-		else:
-			texture = hold_button_texture
-			pressed_texture = hold_button_texture_pressed
 		$Sprite2D.texture = texture
 @export var connects_to: Array[Powerable]
 
@@ -25,6 +19,15 @@ var pressed_texture : Texture2D
 
 var pressed: bool = false
 var was_pressed: bool = false
+
+func _ready():
+	if not Engine.is_editor_hint():
+		if button_type == ButtonType.PRESS:
+			texture = press_button_texture
+			pressed_texture = press_button_texture_pressed
+		else:
+			texture = hold_button_texture
+			pressed_texture = hold_button_texture_pressed
 
 func _physics_process(_delta: float) -> void:
 	if not Engine.is_editor_hint():
