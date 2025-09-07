@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b0x3aihndppp2" path="res://Scenes/attachment_point.tscn" id="3_c2iur"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ejx3s"]
-size = Vector2(100, 100)
+size = Vector2(98, 98)
 
 [node name="Block" type="CollisionShape2D"]
 shape = SubResource("RectangleShape2D_ejx3s")

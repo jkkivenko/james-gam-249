@@ -4,5 +4,6 @@
 
 [node name="HeldEntity" type="CharacterBody2D" groups=["Component Entities"]]
 collision_layer = 16
+collision_mask = 65
 input_pickable = true
 script = ExtResource("1_fu2gw")

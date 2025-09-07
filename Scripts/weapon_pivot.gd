@@ -40,7 +40,7 @@ func get_all_components(obj : Node2D = self) -> Array[HammerComponent]:
 	return components
 
 func _process(_delta):
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and hovered_component and not GameManager.is_holding_a_component:
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and hovered_component and not GameManager.is_holding_a_component and not GameManager.mouse_in_exclusion_zone:
 		disconnect_component(hovered_component)
 		for disconnected_component in get_disconnected_components():
 			print("THERE IS A DISCONNECTED COMPONENT!!!!!!!!!!!!!!!!!!!")

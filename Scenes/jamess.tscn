@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dl8yi5v1vwkq3" path="res://Scenes/player.tscn" id="2_f8181"]
 [ext_resource type="PackedScene" uid="uid://bwmfqse5rocjw" path="res://Scenes/physics_entity.tscn" id="4_fe7jn"]
 [ext_resource type="PackedScene" uid="uid://dafcgwkvmg08y" path="res://Scenes/block.tscn" id="5_lpgml"]
-[ext_resource type="PackedScene" uid="uid://bgt2k213q2327" path="res://Scenes/spike.tscn" id="5_nanmf"]
+[ext_resource type="PackedScene" path="res://Scenes/spike.tscn" id="5_nanmf"]
 [ext_resource type="PackedScene" uid="uid://nqxkygju2j46" path="res://Scenes/enemy.tscn" id="7_jtmli"]
 [ext_resource type="PackedScene" uid="uid://dqnnoeh0dq28u" path="res://Scenes/spring.tscn" id="9_pds1a"]
 

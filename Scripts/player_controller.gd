@@ -5,13 +5,14 @@ class_name PlayerController extends RigidBody2D
 @export var bonus_friction_force_magnitude: float = 100.0
 @export var not_on_ground_force_multiplier: float = 0.2
 
-@onready var floor_cast: RayCast2D = $FloorCast
+@onready var floor_cast1: RayCast2D = $FloorCast1
+@onready var floor_cast2: RayCast2D = $FloorCast2
 
 func _ready():
 	GameManager.player = self
 
 func _physics_process(_delta):
-	var on_ground = floor_cast.is_colliding()
+	var on_ground = floor_cast1.is_colliding() || floor_cast2.is_colliding()
 	var current_step_magnitude = movement_force_magnitude * (1.0 if on_ground else not_on_ground_force_multiplier)
 	
 	if Input.is_action_pressed('Move Left') && linear_velocity.x > -max_movement_speed:

@@ -1,31 +1,44 @@
-[gd_scene load_steps=15 format=4 uid="uid://caepxlmorghrs"]
+[gd_scene load_steps=20 format=4 uid="uid://caepxlmorghrs"]
 
 [ext_resource type="PackedScene" uid="uid://nqxkygju2j46" path="res://Scenes/enemy.tscn" id="2_i36j2"]
 [ext_resource type="PackedScene" uid="uid://dl8yi5v1vwkq3" path="res://Scenes/player.tscn" id="2_u1b78"]
 [ext_resource type="PackedScene" uid="uid://buas4iqytj32k" path="res://Scenes/button.tscn" id="7_nolpu"]
 [ext_resource type="PackedScene" uid="uid://bdc44ouqrma4l" path="res://Scenes/sliding_door.tscn" id="9_af2a1"]
 [ext_resource type="Script" uid="uid://bei8fc3xkq2n6" path="res://Scripts/tile_map_layer_baker.gd" id="9_hkfpk"]
+[ext_resource type="PackedScene" uid="uid://0e7po7lhbsnh" path="res://Scenes/enemy_spike.tscn" id="9_ir7pk"]
 [ext_resource type="TileSet" uid="uid://dumlhgw7hloka" path="res://Resources/grass_tile_set.tres" id="10_ocmlb"]
 [ext_resource type="PackedScene" uid="uid://1i5apjkfmswe" path="res://Scenes/camera.tscn" id="11_tlxhh"]
 [ext_resource type="PackedScene" uid="uid://cttfjhq6eot7b" path="res://Scenes/exit.tscn" id="12_rxhxl"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkfpk"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i36j2"]
 size = Vector2(128, 128)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ir7pk"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkfpk"]
 size = Vector2(256, 128)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ilsv2"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ir7pk"]
 size = Vector2(64, 64)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4f2fw"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ilsv2"]
 size = Vector2(1024, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4f2fw"]
+size = Vector2(1280, 192)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8r8ce"]
-size = Vector2(1024, 192)
+size = Vector2(192, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nqasx"]
-size = Vector2(320, 256)
+size = Vector2(576, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ryjqc"]
+size = Vector2(192, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xe7un"]
+size = Vector2(256, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v3vqe"]
+size = Vector2(256, 64)
 
 [node name="Game" type="Node2D"]
 
@@ -33,7 +46,7 @@ size = Vector2(320, 256)
 position = Vector2(348, 438)
 
 [node name="Enemy" parent="." instance=ExtResource("2_i36j2")]
-position = Vector2(736, 436)
+position = Vector2(831, 432)
 movement_force_magnitude = 750.0
 
 [node name="SlidingDoor" parent="." instance=ExtResource("9_af2a1")]
@@ -41,10 +54,70 @@ position = Vector2(152, 450)
 rotation = -1.5708
 offset_from_closed = Vector2(0, -110)
 
+[node name="TileMapLayerCollider" type="StaticBody2D" parent="."]
+scale = Vector2(1.563, 1.563)
+script = ExtResource("9_hkfpk")
+tilemaplayers_nodepaths = Array[NodePath]([NodePath("../TileMapLayer")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayerCollider"]
+position = Vector2(-64, 256)
+shape = SubResource("RectangleShape2D_i36j2")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TileMapLayerCollider"]
+position = Vector2(0, 128)
+shape = SubResource("RectangleShape2D_hkfpk")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="TileMapLayerCollider"]
+position = Vector2(96, 224)
+shape = SubResource("RectangleShape2D_ir7pk")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="TileMapLayerCollider"]
+position = Vector2(384, -32)
+shape = SubResource("RectangleShape2D_ilsv2")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="TileMapLayerCollider"]
+position = Vector2(512, 416)
+shape = SubResource("RectangleShape2D_4f2fw")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="TileMapLayerCollider"]
+position = Vector2(672, 224)
+shape = SubResource("RectangleShape2D_8r8ce")
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="TileMapLayerCollider"]
+position = Vector2(864, 128)
+shape = SubResource("RectangleShape2D_nqasx")
+
+[node name="CollisionShape2D16" type="CollisionShape2D" parent="TileMapLayerCollider"]
+position = Vector2(1056, 288)
+shape = SubResource("RectangleShape2D_ryjqc")
+
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 rotation = -0.00202656
 scale = Vector2(1.563, 1.563)
-tile_map_data = PackedByteArray("AAABAAUAAQACAAAAAAD//wUAAQAAAAAAAAD//wQAAQAAAAAAAAD//wMAAQAAAAAAAAD//wIAAQAAAAAAAAD//wEAAQAAAAAAAAAAAAUAAQABAAAAAAABAAEAAQAAAAAAAAAAAAEAAQAAAAAAAAABAAMAAQAAAAEAAAABAAIAAQAAAAAAAAD//wAAAQAAAAAAAAAAAAAAAQAAAAAAAAABAAAAAQAAAAAAAAAAAAIAAQAAAAAAAAADAAAAAQAAAAAAAAADAAUAAQACAAAAAAAEAAAAAQAAAAAAAAAEAAUAAQACAAAAAAAFAAAAAQAAAAAAAAAFAAUAAQACAAAAAAAGAAAAAQAAAAAAAAAGAAUAAQACAAAAAAAHAAAAAQAAAAAAAAAHAAUAAQACAAAAAAAIAAAAAQAAAAAAAAAIAAUAAQADAAAAAAAJAAAAAQAAAAAAAAAJAAUAAQAAAAAAAAACAAAAAQAAAAAAAAACAAUAAQACAAAAAAAJAAEAAQAAAAAAAAAJAAIAAQAAAAAAAAAJAAMAAQAAAAAAAAAJAAQAAQAAAAAAAAD+/wAAAQAAAAAAAAD+/wEAAQAAAAAAAAD+/wIAAQAAAAAAAAD+/wMAAQAAAAAAAAD+/wQAAQAAAAAAAAD+/wUAAQAAAAAAAAD+/wYAAQAAAAAAAAD+/wcAAQAAAAAAAAD//wYAAQAAAAAAAAD//wcAAQAAAAAAAAAAAAYAAQAAAAAAAAAAAAcAAQAAAAAAAAABAAYAAQAAAAAAAAABAAcAAQAAAAAAAAACAAYAAQAAAAAAAAACAAcAAQAAAAAAAAADAAYAAQAAAAAAAAADAAcAAQAAAAAAAAAEAAYAAQAAAAAAAAAEAAcAAQAAAAAAAAAFAAYAAQAAAAAAAAAFAAcAAQAAAAAAAAAGAAYAAQAAAAAAAAAGAAcAAQAAAAAAAAAHAAYAAQAAAAAAAAAHAAcAAQAAAAAAAAAIAAYAAQAAAAAAAAAIAAcAAQAAAAAAAAAJAAYAAQAAAAAAAAAJAAcAAQAAAAAAAAAKAAYAAQAAAAAAAAAKAAcAAQAAAAAAAAAKAAAAAQAAAAAAAAAKAAEAAQAAAAAAAAAKAAIAAQAAAAAAAAAKAAMAAQAAAAAAAAAKAAQAAQAAAAAAAAAKAAUAAQAAAAAAAAALAAAAAQAAAAAAAAALAAEAAQAAAAAAAAALAAIAAQAAAAAAAAALAAMAAQAAAAAAAAALAAQAAQAAAAAAAAALAAUAAQAAAAAAAAALAAYAAQAAAAAAAAALAAcAAQAAAAAAAAD+//7/AQAAAAAAAAD+////AQAAAAAAAAD///7/AQAAAAAAAAD/////AQAAAAAAAAAAAP7/AQAAAAAAAAAAAP//AQAAAAAAAAABAP7/AQAAAAAAAAABAP//AQAAAAAAAAACAP7/AQAAAAAAAAACAP//AQAAAAAAAAADAP7/AQAAAAAAAAADAP//AQAAAAAAAAAEAP7/AQAAAAAAAAAEAP//AQAAAAAAAAAFAP7/AQAAAAAAAAAFAP//AQAAAAAAAAAGAP7/AQAAAAAAAAAGAP//AQAAAAAAAAAHAP7/AQAAAAAAAAAHAP//AQAAAAAAAAAIAP7/AQAAAAAAAAAIAP//AQAAAAAAAAAJAP7/AQAAAAAAAAAJAP//AQAAAAAAAAAKAP7/AQAAAAAAAAAKAP//AQAAAAAAAAALAP7/AQAAAAAAAAALAP//AQAAAAAAAAAMAP7/AQAAAAAAAAAMAP//AQAAAAAAAAAMAAAAAQAAAAAAAAAMAAEAAQAAAAAAAAAMAAIAAQAAAAAAAAAMAAMAAQAAAAAAAAAMAAQAAQAAAAAAAAAMAAUAAQAAAAAAAAAMAAYAAQAAAAAAAAAMAAcAAQAAAAAAAAANAP7/AQAAAAAAAAANAP//AQAAAAAAAAANAAAAAQAAAAAAAAANAAEAAQAAAAAAAAANAAIAAQAAAAAAAAANAAMAAQAAAAAAAAANAAQAAQAAAAAAAAANAAUAAQAAAAAAAAANAAYAAQAAAAAAAAANAAcAAQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAABAAUAAQACAAAAAAD//wUAAQAAAAAAAAD//wQAAQAAAAAAAAD//wMAAQAAAAAAAAD//wIAAQAAAAAAAAD//wEAAQAAAAAAAAAAAAUAAQABAAAAAAABAAEAAQAAAAAAAAAAAAEAAQAAAAAAAAABAAMAAQAAAAEAAAABAAIAAQAAAAAAAAD//wAAAQAAAAAAAAAAAAAAAQAAAAAAAAABAAAAAQAAAAAAAAAAAAIAAQAAAAAAAAADAAAAAQAAAAAAAAADAAUAAQACAAAAAAAEAAAAAQAAAAAAAAAEAAUAAQACAAAAAAAFAAAAAQAAAAAAAAAFAAUAAQACAAAAAAAGAAAAAQAAAAAAAAAGAAUAAQACAAAAAAAHAAAAAQAAAAAAAAAHAAUAAQACAAAAAAAIAAAAAQAAAAAAAAAIAAUAAQADAAAAAAAJAAAAAQAAAAAAAAAJAAUAAQAAAAAAAAACAAAAAQAAAAAAAAACAAUAAQACAAAAAAAJAAEAAQAAAAAAAAAJAAIAAQAAAAAAAAAJAAMAAQAAAAAAAAD+/wAAAQAAAAAAAAD+/wEAAQAAAAAAAAD+/wIAAQAAAAAAAAD+/wMAAQAAAAAAAAD+/wQAAQAAAAAAAAD+/wUAAQAAAAAAAAD+/wYAAQAAAAAAAAD+/wcAAQAAAAAAAAD//wYAAQAAAAAAAAD//wcAAQAAAAAAAAAAAAYAAQAAAAAAAAAAAAcAAQAAAAAAAAABAAYAAQAAAAAAAAABAAcAAQAAAAAAAAACAAYAAQAAAAAAAAACAAcAAQAAAAAAAAADAAYAAQAAAAAAAAADAAcAAQAAAAAAAAAEAAYAAQAAAAAAAAAEAAcAAQAAAAAAAAAFAAYAAQAAAAAAAAAFAAcAAQAAAAAAAAAGAAYAAQAAAAAAAAAGAAcAAQAAAAAAAAAHAAYAAQAAAAAAAAAHAAcAAQAAAAAAAAAIAAYAAQAAAAAAAAAIAAcAAQAAAAAAAAAJAAYAAQAAAAAAAAAJAAcAAQAAAAAAAAAKAAYAAQAAAAAAAAAKAAcAAQAAAAAAAAAKAAAAAQAAAAAAAAAKAAEAAQAAAAAAAAAKAAIAAQAAAAAAAAAKAAMAAQAAAAAAAAAKAAUAAQAAAAAAAAALAAAAAQAAAAAAAAALAAEAAQAAAAAAAAALAAIAAQAAAAAAAAALAAMAAQAAAAAAAAALAAUAAQAAAAAAAAALAAYAAQAAAAAAAAALAAcAAQAAAAAAAAD+//7/AQAAAAAAAAD+////AQAAAAAAAAD///7/AQAAAAAAAAD/////AQAAAAAAAAAAAP7/AQAAAAAAAAAAAP//AQAAAAAAAAABAP7/AQAAAAAAAAABAP//AQAAAAAAAAACAP7/AQAAAAAAAAACAP//AQAAAAAAAAADAP7/AQAAAAAAAAADAP//AQAAAAAAAAAEAP7/AQAAAAAAAAAEAP//AQAAAAAAAAAFAP7/AQAAAAAAAAAFAP//AQAAAAAAAAAGAP7/AQAAAAAAAAAGAP//AQAAAAAAAAAHAP7/AQAAAAAAAAAHAP//AQAAAAAAAAAIAP7/AQAAAAAAAAAIAP//AQAAAAAAAAAJAP7/AQAAAAAAAAAJAP//AQAAAAAAAAAKAP7/AQAAAAAAAAAKAP//AQAAAAAAAAALAP7/AQAAAAAAAAALAP//AQAAAAAAAAAMAP7/AQAAAAAAAAAMAP//AQAAAAAAAAAMAAAAAQAAAAAAAAAMAAEAAQAAAAAAAAAMAAIAAQAAAAAAAAAMAAUAAQAAAAAAAAAMAAYAAQAAAAAAAAAMAAcAAQAAAAAAAAANAP7/AQAAAAAAAAANAP//AQAAAAAAAAANAAAAAQAAAAAAAAANAAEAAQAAAAAAAAANAAIAAQAAAAAAAAANAAUAAQAAAAAAAAANAAYAAQAAAAAAAAANAAcAAQAAAAAAAAAOAAUAAQAAAAAAAAAPAAQAAQAAAAAAAAAQAAQAAQAAAAAAAAAQAAUAAQAAAAAAAAAPAAUAAQAAAAAAAAAOAAIAAQAAAAAAAAAPAAIAAQAAAAAAAAAQAAIAAQAAAAAAAAAPAAEAAQAAAAAAAAAQAAEAAQAAAAAAAAAOAAEAAQAAAAAAAAARAAQAAQAAAAAAAAARAAUAAQAAAAAAAAARAAYAAQAAAAAAAAAQAAYAAQAAAAAAAAAPAAYAAQAAAAAAAAAOAAYAAQAAAAAAAAAOAAcAAQAAAAAAAAAPAAcAAQAAAAAAAAAQAAcAAQAAAAAAAAARAAcAAQAAAAAAAAARAAIAAQAAAAAAAAARAAEAAQAAAAAAAAA=")
+tile_set = ExtResource("10_ocmlb")
+collision_enabled = false
+navigation_enabled = false
+
+[node name="DraggableExclusionZone" type="StaticBody2D" parent="." groups=["Draggable Exclusion Collider"]]
+scale = Vector2(1.563, 1.563)
+collision_layer = 64
+input_pickable = true
+script = ExtResource("9_hkfpk")
+tilemaplayers_nodepaths = Array[NodePath]([NodePath("../TileMapLayer2")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DraggableExclusionZone"]
+position = Vector2(832, 288)
+shape = SubResource("RectangleShape2D_xe7un")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DraggableExclusionZone"]
+position = Vector2(896, 224)
+shape = SubResource("RectangleShape2D_v3vqe")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="."]
+rotation = -0.00202656
+scale = Vector2(1.563, 1.563)
+tile_map_data = PackedByteArray("AAALAAQAAQARAAAAAAAMAAQAAQARAAAAAAAMAAMAAQARAAAAAAANAAMAAQARAAAAAAANAAQAAQARAAAAAAAOAAQAAQARAAAAAAAOAAMAAQARAAAAAAAPAAMAAQARAAAAAAA=")
 tile_set = ExtResource("10_ocmlb")
 collision_enabled = false
 navigation_enabled = false
@@ -56,42 +129,17 @@ position = Vector2(597, 334)
 position = Vector2(-665, 329)
 
 [node name="TopRight" parent="Camera2D" index="1"]
-position = Vector2(534, -282)
+position = Vector2(1717, -374)
 
 [node name="Exit" parent="." instance=ExtResource("12_rxhxl")]
 position = Vector2(48, 449)
 
-[node name="TileMapLayerCollider" type="StaticBody2D" parent="."]
-scale = Vector2(1.563, 1.563)
-script = ExtResource("9_hkfpk")
-tilemaplayers_nodepaths = Array[NodePath]([NodePath("../TileMapLayer")])
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMapLayerCollider"]
-position = Vector2(-64, 256)
-shape = SubResource("RectangleShape2D_hkfpk")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="TileMapLayerCollider"]
-position = Vector2(0, 128)
-shape = SubResource("RectangleShape2D_ir7pk")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="TileMapLayerCollider"]
-position = Vector2(96, 224)
-shape = SubResource("RectangleShape2D_ilsv2")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="TileMapLayerCollider"]
-position = Vector2(384, -32)
-shape = SubResource("RectangleShape2D_4f2fw")
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="TileMapLayerCollider"]
-position = Vector2(384, 416)
-shape = SubResource("RectangleShape2D_8r8ce")
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="TileMapLayerCollider"]
-position = Vector2(736, 192)
-shape = SubResource("RectangleShape2D_nqasx")
-
-[node name="Button" parent="." instance=ExtResource("7_nolpu")]
+[node name="Button" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("7_nolpu")]
 position = Vector2(895, 201)
 rotation = -1.5708
+connects_to = [NodePath("../SlidingDoor")]
+
+[node name="Enemy2" parent="." instance=ExtResource("9_ir7pk")]
+position = Vector2(634, 399)
 
 [editable path="Camera2D"]

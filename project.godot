@@ -23,6 +23,7 @@ GameManager="*res://Scripts/game_manager.gd"
 
 "Component Entities"=""
 Weapon=""
+"Draggable Exclusion Collider"=""
 
 [input]
 
@@ -60,6 +61,7 @@ Weapon=""
 2d_physics/layer_4="Player Exclusion"
 2d_physics/layer_5="Floating Object"
 2d_physics/layer_6="Hammer"
+2d_physics/layer_7="Floating Object Exclusion"
 
 [rendering]
 
