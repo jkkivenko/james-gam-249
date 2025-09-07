@@ -45,6 +45,16 @@ func _process(_delta):
 		for disconnected_component in get_disconnected_components():
 			print("THERE IS A DISCONNECTED COMPONENT!!!!!!!!!!!!!!!!!!!")
 			disconnect_component(disconnected_component, false)
+	if GameManager.is_holding_a_component:
+		for component in get_all_components():
+			for attachment_point in component.get_attachment_points():
+				if not attachment_point.attached_point:
+					attachment_point.get_node("Indicator").visible = true
+	else:
+		for component in get_all_components():
+			for attachment_point in component.get_attachment_points():
+				attachment_point.get_node("Indicator").visible = false
+			
 
 func disconnect_component(component : HammerComponent, should_create_held_object : bool = true):
 	# First we create the held entity that will float around the player's mouse
@@ -60,6 +70,7 @@ func disconnect_component(component : HammerComponent, should_create_held_object
 		entity.target_rotation = (PI / 2.0) * roundf(entity.global_rotation / (PI / 2.0))
 	# Make sure to disconnect all attached points
 	for attachment_point in component.get_attachment_points():
+		attachment_point.get_node("Indicator").visible = true
 		if attachment_point.attached_point:
 			attachment_point.attached_point.attached_point = null
 			attachment_point.attached_point = null
@@ -138,7 +149,7 @@ func add_component(component : HammerComponent) -> bool:
 		collision_test_area.remove_child(component)
 		collision_test_area.queue_free()
 		if is_colliding:
-			# As it was, not it is again
+			# As it was, now it is again
 			old_parent.add_child(component)
 			component.rotation = 0
 			component.position = Vector2.ZERO
@@ -150,6 +161,8 @@ func add_component(component : HammerComponent) -> bool:
 		# Have to recalculate these because the hammer might have moved during the await step
 		# This does technically mean that the player could subvert the collision detection if they're swinging the hammer REALLY HARD
 		# But like, whatever
+		for attachment_point in component.get_attachment_points():
+			attachment_point.get_node("Indicator").visible = false
 		component_rotation = global_rotation - closest_attachment_point_other.rotation + closest_attachment_point_self.rotation + PI + closest_attachment_point_self.get_parent().rotation
 		position_offset = (-closest_attachment_point_other.position).rotated(component_rotation)
 		component_position = closest_attachment_point_self.global_position + position_offset

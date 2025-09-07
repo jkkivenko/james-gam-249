@@ -6,13 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://bxdeq1ivh4mi3" path="res://Scenes/gügly_eyes.tscn" id="4_3dryh"]
 [ext_resource type="Texture2D" uid="uid://di8a0j646lffh" path="res://art/enemy_1.png" id="4_h4fw4"]
 [ext_resource type="TileSet" uid="uid://dumlhgw7hloka" path="res://Resources/grass_tile_set.tres" id="5_v158k"]
-[ext_resource type="PackedScene" uid="uid://buas4iqytj32k" path="res://Scenes/button_press.tscn" id="5_wowpa"]
-[ext_resource type="Script" uid="uid://bjbbotk4r002l" path="res://Scripts/button.gd" id="6_i6g32"]
+[ext_resource type="PackedScene" uid="uid://buas4iqytj32k" path="res://Scenes/button.tscn" id="5_wowpa"]
+[ext_resource type="Script" path="res://Scripts/button.gd" id="6_i6g32"]
 [ext_resource type="PackedScene" uid="uid://bdc44ouqrma4l" path="res://Scenes/sliding_door.tscn" id="7_1l0tm"]
-[ext_resource type="PackedScene" uid="uid://1i5apjkfmswe" path="res://Scenes/camera.tscn" id="10_ldgsr"]
+[ext_resource type="PackedScene" path="res://Scenes/camera.tscn" id="10_ldgsr"]
 [ext_resource type="PackedScene" uid="uid://cttfjhq6eot7b" path="res://Scenes/exit.tscn" id="11_o5yvi"]
 [ext_resource type="PackedScene" uid="uid://bwmfqse5rocjw" path="res://Scenes/physics_entity.tscn" id="12_rfjv2"]
 [ext_resource type="PackedScene" uid="uid://dafcgwkvmg08y" path="res://Scenes/block.tscn" id="13_1phco"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e2o6t"]
 size = Vector2(1234, 191)

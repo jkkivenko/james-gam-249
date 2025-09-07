@@ -35,6 +35,8 @@ func create_physics_entity():
 	add_sibling(physics_entity)
 	physics_entity.transform = transform
 	var component = get_child(0)
+	for attachment_point in component.get_attachment_points():
+		attachment_point.get_node("Indicator").visible = false
 	remove_child(component)
 	physics_entity.add_child(component)
 	physics_entity.component = component

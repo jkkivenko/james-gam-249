@@ -29,6 +29,8 @@ func reset_component():
 			push_error("Tried to attach a component that isn't a HammerComponent!")
 
 func create_held_entity():
+	for attachment_point in component.get_attachment_points():
+		attachment_point.get_node("Indicator").visible = true
 	var held_entity : HeldEntity = held_entity_scene.instantiate()
 	add_sibling(held_entity)
 	held_entity.transform = transform
