@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dafcgwkvmg08y"]
+[gd_scene load_steps=6 format=3 uid="uid://dafcgwkvmg08y"]
 
 [ext_resource type="Script" uid="uid://t3j8047r2pwx" path="res://Scripts/hammer_component.gd" id="1_8o1l4"]
-[ext_resource type="Texture2D" uid="uid://vsh53w0kddj4" path="res://icon.svg" id="2_8o1l4"]
+[ext_resource type="Texture2D" uid="uid://b2y1iaa2xfe6h" path="res://art/brickguy.png" id="2_c2iur"]
 [ext_resource type="PackedScene" uid="uid://b0x3aihndppp2" path="res://Scenes/attachment_point.tscn" id="3_c2iur"]
+[ext_resource type="PackedScene" uid="uid://bxdeq1ivh4mi3" path="res://Scenes/gügly_eyes.tscn" id="3_i67tl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ejx3s"]
 size = Vector2(98, 98)
@@ -12,8 +13,14 @@ shape = SubResource("RectangleShape2D_ejx3s")
 script = ExtResource("1_8o1l4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.784, 0.784)
-texture = ExtResource("2_8o1l4")
+scale = Vector2(5, 5)
+texture = ExtResource("2_c2iur")
+
+[node name="GüglyEyes" parent="Sprite2D" instance=ExtResource("3_i67tl")]
+position = Vector2(4.5, -0.5)
+
+[node name="GüglyEyes2" parent="Sprite2D" instance=ExtResource("3_i67tl")]
+position = Vector2(-4.5, -0.5)
 
 [node name="Left" parent="." instance=ExtResource("3_c2iur")]
 position = Vector2(-50, 0)

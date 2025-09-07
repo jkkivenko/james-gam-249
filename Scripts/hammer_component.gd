@@ -10,3 +10,14 @@ func get_attachment_points() -> Array[AttachmentPoint]:
 		if child is AttachmentPoint:
 			attachment_points.append(child)
 	return attachment_points
+
+func _process(_delta) -> void:
+	var dead_eyes = true
+	if get_parent() is WeaponPivot:
+		dead_eyes = false
+		
+	var all_googly = $Sprite2D.get_children()
+	for i in all_googly:
+		if i is Googly:
+			i.dead = dead_eyes
+		

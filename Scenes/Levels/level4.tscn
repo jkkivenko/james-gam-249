@@ -6,7 +6,7 @@
 [ext_resource type="TileSet" uid="uid://dumlhgw7hloka" path="res://Resources/grass_tile_set.tres" id="4_6xlxm"]
 [ext_resource type="PackedScene" uid="uid://nqxkygju2j46" path="res://Scenes/enemy.tscn" id="5_7npjx"]
 [ext_resource type="PackedScene" uid="uid://cttfjhq6eot7b" path="res://Scenes/exit.tscn" id="6_kee65"]
-[ext_resource type="PackedScene" uid="uid://buas4iqytj32k" path="res://Scenes/button_press.tscn" id="7_li750"]
+[ext_resource type="PackedScene" uid="uid://buas4iqytj32k" path="res://Scenes/button.tscn" id="7_li750"]
 [ext_resource type="PackedScene" uid="uid://cmsxhdvp6h10f" path="res://Scenes/wire.tscn" id="8_lpiby"]
 [ext_resource type="PackedScene" uid="uid://bdc44ouqrma4l" path="res://Scenes/sliding_door.tscn" id="9_6xlxm"]
 
@@ -53,7 +53,7 @@ zoom = Vector2(0.8, 0.8)
 position = Vector2(-575, 404)
 
 [node name="TopRight" parent="Camera2D" index="1"]
-position = Vector2(796, -329)
+position = Vector2(888, -347)
 
 [node name="Tilemaps" type="Node2D" parent="."]
 
@@ -155,7 +155,7 @@ movement_force_magnitude = 750.0
 position = Vector2(34, 348)
 
 [node name="Press Button" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("7_li750")]
-position = Vector2(893, 546)
+position = Vector2(906, 548)
 rotation = -1.56622
 connects_to = [NodePath("../SlidingDoor2"), NodePath("../SlidingDoor"), NodePath("../Wire")]
 
