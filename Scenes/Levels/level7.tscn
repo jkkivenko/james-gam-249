@@ -1,0 +1,147 @@
+[gd_scene load_steps=19 format=4 uid="uid://ygsu55sefl3m"]
+
+[ext_resource type="PackedScene" uid="uid://dl8yi5v1vwkq3" path="res://Scenes/player.tscn" id="1_skykd"]
+[ext_resource type="PackedScene" uid="uid://1i5apjkfmswe" path="res://Scenes/camera.tscn" id="2_lnlnx"]
+[ext_resource type="Script" uid="uid://bei8fc3xkq2n6" path="res://Scripts/tile_map_layer_baker.gd" id="3_nkgts"]
+[ext_resource type="TileSet" uid="uid://dumlhgw7hloka" path="res://Resources/grass_tile_set.tres" id="4_5r6oh"]
+[ext_resource type="PackedScene" uid="uid://bdc44ouqrma4l" path="res://Scenes/sliding_door.tscn" id="5_pap8m"]
+[ext_resource type="PackedScene" uid="uid://cttfjhq6eot7b" path="res://Scenes/exit.tscn" id="6_f0xmk"]
+[ext_resource type="PackedScene" uid="uid://buas4iqytj32k" path="res://Scenes/button.tscn" id="7_qd174"]
+[ext_resource type="PackedScene" uid="uid://cmsxhdvp6h10f" path="res://Scenes/wire.tscn" id="8_nx2sr"]
+[ext_resource type="PackedScene" uid="uid://0e7po7lhbsnh" path="res://Scenes/enemy_spike.tscn" id="9_1fsal"]
+[ext_resource type="PackedScene" uid="uid://bbwrl1iifmyqs" path="res://Scenes/enemy_with_armor.tscn" id="10_lvtxo"]
+[ext_resource type="PackedScene" uid="uid://nqxkygju2j46" path="res://Scenes/enemy.tscn" id="10_skykd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_skykd"]
+size = Vector2(20, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lnlnx"]
+size = Vector2(20, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkgts"]
+size = Vector2(320, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5r6oh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pap8m"]
+size = Vector2(20, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0xmk"]
+size = Vector2(80, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qd174"]
+size = Vector2(60, 20)
+
+[node name="Game" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_skykd")]
+position = Vector2(602, 513)
+
+[node name="Camera2D" parent="." instance=ExtResource("2_lnlnx")]
+position = Vector2(454, 323)
+zoom = Vector2(0.8, 0.8)
+
+[node name="BottomLeft" parent="Camera2D" index="0"]
+position = Vector2(-580, 414)
+
+[node name="TopRight" parent="Camera2D" index="1"]
+position = Vector2(1087, -353)
+
+[node name="Tilemaps" type="Node2D" parent="."]
+
+[node name="TileMapLayerCollider" type="StaticBody2D" parent="Tilemaps"]
+scale = Vector2(5, 5)
+script = ExtResource("3_nkgts")
+tilemaplayers_nodepaths = Array[NodePath]([NodePath("../TileMapLayer")])
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+position = Vector2(-10, 60)
+shape = SubResource("RectangleShape2D_skykd")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+position = Vector2(30, 50)
+shape = SubResource("RectangleShape2D_lnlnx")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+position = Vector2(140, 130)
+shape = SubResource("RectangleShape2D_nkgts")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+position = Vector2(210, 110)
+shape = SubResource("RectangleShape2D_5r6oh")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="Tilemaps/TileMapLayerCollider"]
+position = Vector2(290, 60)
+shape = SubResource("RectangleShape2D_pap8m")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Tilemaps"]
+rotation = -0.00202656
+scale = Vector2(5, 5)
+tile_map_data = PackedByteArray("AAAAAAYAAgAAAAAAAAABAAYAAgABAAAAAAACAAYAAgABAAAAAAADAAYAAgABAAAAAAAEAAYAAgABAAAAAAAFAAYAAgABAAAAAAAGAAYAAgABAAAAAAAHAAYAAgABAAAAAAAIAAYAAgABAAAAAAAJAAYAAgABAAAAAAAKAAYAAgABAAAAAAALAAYAAgABAAAAAAAMAAYAAgABAAAAAAANAAYAAgACAAAAAAAOAAUAAgAAAAIAAAAOAAYAAgAAAAEAACAOAAEAAgAAAAIAAAAOAAQAAgAAAAIAAAAOAAMAAgAAAAIAAAAOAAIAAgAAAAIAAAD//wYAAgAAAAEAACD//wEAAgAAAAIAAAD//wIAAgAAAAIAAAD//wMAAgAAAAIAAAD//wQAAgAAAAIAAAD//wUAAgAAAAIAAAABAAQAAgAAAAEAACABAAEAAgAAAAIAAAABAAIAAgAAAAIAAAABAAMAAgAAAAIAAAAKAAUAAgAFAAIAAAABAAAAAgAAAAEAAAD//wAAAgAAAAEAAAAOAAAAAgAAAAEAAAA=")
+tile_set = ExtResource("4_5r6oh")
+collision_enabled = false
+navigation_enabled = false
+
+[node name="DraggableExclusionZone" type="StaticBody2D" parent="Tilemaps" groups=["Draggable Exclusion Collider"]]
+scale = Vector2(5, 5)
+collision_layer = 64
+input_pickable = true
+script = ExtResource("3_nkgts")
+tilemaplayers_nodepaths = Array[NodePath]([NodePath("../DraggableExclusionTileMapLayer")])
+
+[node name="DraggableExclusionTileMapLayer" type="TileMapLayer" parent="Tilemaps"]
+rotation = -0.00202656
+scale = Vector2(5, 5)
+tile_set = ExtResource("4_5r6oh")
+collision_enabled = false
+navigation_enabled = false
+
+[node name="PlayerExclusionZone" type="StaticBody2D" parent="Tilemaps"]
+scale = Vector2(5, 5)
+collision_layer = 8
+input_pickable = true
+script = ExtResource("3_nkgts")
+tilemaplayers_nodepaths = Array[NodePath]([NodePath("../PlayerExclusionZoneTileMapLayer")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tilemaps/PlayerExclusionZone"]
+position = Vector2(240, 60)
+shape = SubResource("RectangleShape2D_f0xmk")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Tilemaps/PlayerExclusionZone"]
+position = Vector2(250, 110)
+shape = SubResource("RectangleShape2D_qd174")
+
+[node name="PlayerExclusionZoneTileMapLayer" type="TileMapLayer" parent="Tilemaps"]
+rotation = -0.00202656
+scale = Vector2(5, 5)
+tile_map_data = PackedByteArray("AAAKAAQAAgACAAMAAAAKAAMAAgACAAMAAAAKAAIAAgACAAMAAAAKAAEAAgACAAIAAAALAAEAAgADAAIAAAAMAAEAAgADAAIAAAANAAEAAgAEAAIAAAANAAIAAgAEAAMAAAANAAMAAgAEAAMAAAANAAQAAgAEAAMAAAANAAUAAgAEAAMAAAAMAAUAAgADAAMAAAALAAUAAgADAAMAAAALAAQAAgADAAMAAAAMAAQAAgADAAMAAAAMAAMAAgADAAMAAAALAAMAAgADAAMAAAALAAIAAgADAAMAAAAMAAIAAgADAAMAAAA=")
+tile_set = ExtResource("4_5r6oh")
+collision_enabled = false
+navigation_enabled = false
+
+[node name="Armored Enemy" parent="Tilemaps" instance=ExtResource("10_lvtxo")]
+position = Vector2(1161, 544)
+
+[node name="SlidingDoor" parent="." instance=ExtResource("5_pap8m")]
+position = Vector2(152, 550)
+rotation = -1.5708
+offset_from_closed = Vector2(0, -110)
+
+[node name="Exit" parent="." instance=ExtResource("6_f0xmk")]
+position = Vector2(43, 550)
+
+[node name="Button" parent="." node_paths=PackedStringArray("connects_to") instance=ExtResource("7_qd174")]
+position = Vector2(547, 71)
+rotation = 3.14159
+connects_to = [NodePath("../SlidingDoor"), NodePath("../Wire")]
+
+[node name="Wire" parent="." instance=ExtResource("8_nx2sr")]
+tile_map_data = PackedByteArray("AAABAAIAAgAEAAAAAGABAAEAAgAEAAAAAGABAAQAAgADAAAAAGABAAMAAgAEAAAAAGACAAAAAgAEAAAAADADAAAAAgAEAAAAADAEAAAAAgAEAAAAADABAAAAAgAFAAAAADAFAAAAAgAFAAAAAGA=")
+
+[node name="Spike Enemy" parent="." instance=ExtResource("9_1fsal")]
+position = Vector2(820, 513)
+
+[node name="Enemy" parent="." instance=ExtResource("10_skykd")]
+position = Vector2(337, 519)
+
+[editable path="Camera2D"]
